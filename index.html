@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>M.K Studio | أفلام وتصاميم وعروض وتحليل بيانات</title>
+<meta name="description" content="أفلام وتصاميم وعروض وتحليل بيانات: مسلسلات كرتونية وأفلام قصيرة بالذكاء الاصطناعي، ومجلات وهويات بصرية، ومواقع وتطبيقات ويب.">
+<meta name="theme-color" content="#f7f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0e12" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="M.K Studio">
+<meta property="og:description" content="أفلام وتصاميم وعروض وتحليل بيانات: مسلسلات كرتونية وأفلام قصيرة بالذكاء الاصطناعي، ومجلات وهويات بصرية، ومواقع وتطبيقات ويب.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="M.K Studio">
+<meta name="twitter:description" content="أفلام وتصاميم وعروض وتحليل بيانات: مسلسلات كرتونية وأفلام قصيرة بالذكاء الاصطناعي، ومجلات وهويات بصرية، ومواقع وتطبيقات ويب.">
+<meta name="twitter:image" content="og-image.png">
+</head>
+<body>
+<title>M.K Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="M.K Studio: أفلام قصيرة وتصميم وعروض وتحليل بيانات ومواقع وتطبيقات">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Almarai:wght@400;700&display=swap">
+<style>
+/* التركيب: صفحة محرّرية فاتحة أساسًا، والداكن بتبديل متغيّرات الألوان فقط. البرتقالي #ff6a13 ثابت في الوضعين.
+   الهيرو: فيلم مميز (لمحة صامتة) مع هويتين، ثم «أبرز الأعمال» بينتو، فئات، أقسام، مواقع وتطبيقات، خدمات، تواصل. */
+:root{
+  color-scheme:light;
+  --bg:#f7f7f9; --bg-glass:#f7f7f9eb; --card:#ffffff; --ink:#14151a; --mute:#5b5e6a; --line:#e1e2e8; --ph:#e6e6ea;
+  --fox:#ff6a13; --fox-ink:#bf4306; --fox-wash:#fff0e6; --pill:#ffffff; --pill-ink:#14151a;
+  --btn-bg:#14151a; --btn-fg:#ffffff; --btn-hover:#bf4306; --shadow:#14151a66;
+  --display:"El Messiri","Segoe UI",Tahoma,serif;
+  --body:"Almarai","Segoe UI",Tahoma,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px)); --gutr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#0d0e12; --bg-glass:#0d0e12e6; --card:#16181f; --ink:#f3efe9; --mute:#a3a7b3; --line:#262932; --ph:#1b1d25;
+  --fox-ink:#ff8a4a; --fox-wash:#ff6a1326; --pill:#16181ff2; --pill-ink:#f3efe9;
+  --btn-bg:#f3efe9; --btn-fg:#14151a; --btn-hover:#ff6a13; --shadow:#000a;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0d0e12; --bg-glass:#0d0e12e6; --card:#16181f; --ink:#f3efe9; --mute:#a3a7b3; --line:#262932; --ph:#1b1d25;
+  --fox-ink:#ff8a4a; --fox-wash:#ff6a1326; --pill:#16181ff2; --pill-ink:#f3efe9;
+  --btn-bg:#f3efe9; --btn-fg:#14151a; --btn-hover:#ff6a13; --shadow:#000a;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.8 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.wrap{max-width:1200px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gutr)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--fox);outline-offset:3px}
+img{max-width:100%}
+
+/* شعاران بحسب الوضع */
+.lg{display:block;width:auto}
+.lg-d{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lg-l{display:none}:root:not([data-theme="light"]) .lg-d{display:block}}
+:root[data-theme="dark"] .lg-l{display:none}:root[data-theme="dark"] .lg-d{display:block}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg-glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.top .lg{height:40px}
+.top nav{display:flex;gap:24px;margin-inline-start:auto;font-size:15px;color:var(--mute)}
+.top nav a{text-decoration:none}.top nav a:hover{color:var(--ink)}
+.menu{display:none;width:40px;height:40px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;place-items:center;padding:0}
+.menu:hover{border-color:var(--ink)}
+.menu svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.menu .x{display:none}.menu[aria-expanded="true"] .x{display:block}.menu[aria-expanded="true"] .b{display:none}
+.mnav{display:none}
+@media (max-width:860px){.mnav:not([hidden]){display:flex;flex-direction:column;position:absolute;inset-inline:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 18px 30px -18px var(--shadow);padding:8px var(--gut) 18px;max-height:calc(100vh - 80px);overflow-y:auto}
+.mnav a{padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px}
+.mnav a.btn{margin-top:14px;display:flex;justify-content:center;text-align:center;border-bottom:1.5px solid var(--ink);background:var(--ink);color:var(--bg);font-size:16px;padding:12px}}
+.tools{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;font:700 15px/1 var(--body);padding:12px 22px;border-radius:10px;white-space:nowrap;transition:.2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.solid{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.btn.solid:hover{background:var(--btn-hover);border-color:var(--btn-hover);color:#fff}
+.btn.fox{background:var(--fox);border-color:var(--fox);color:#1a0c02}
+.btn.fox:hover{filter:brightness(1.08);background:var(--fox);color:#1a0c02}
+.top .btn{padding:9px 16px;font-size:14px}
+.theme{width:40px;height:40px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;padding:0}
+.theme:hover{border-color:var(--ink)}
+.theme svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme .sun{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme .sun{display:block}:root:not([data-theme="light"]) .theme .moon{display:none}}
+:root[data-theme="dark"] .theme .sun{display:block}:root[data-theme="dark"] .theme .moon{display:none}
+.playdot{width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent currentColor}
+
+/* هيرو */
+.hero{padding-block:54px 40px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.kicker{display:inline-block;color:var(--fox-ink);font:700 15px/1 var(--body);background:var(--fox-wash);padding:8px 14px;border-radius:999px;margin-bottom:20px}
+.hero h1{margin:0 0 18px;font:700 clamp(32px,4.6vw,60px)/1.2 var(--display);text-wrap:balance}
+.hero h1 u{text-decoration:none;color:var(--mute)}
+.lead{margin:0 0 28px;color:var(--mute);max-width:46ch;font-size:clamp(16px,1.5vw,18px)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+.stats{display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none;border-block:1px solid var(--line)}
+.stats li{padding:14px 22px 14px 0;margin-inline-end:22px;border-inline-end:1px solid var(--line)}
+.stats li:last-child{border:0;margin:0}
+.stats strong{display:block;font:700 34px/1 var(--display);font-variant-numeric:tabular-nums}
+.stats span{color:var(--mute);font-size:13px}
+
+.more{margin:0;color:var(--mute);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.more a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.btn.small{padding:8px 14px;font-size:13px}
+.collage{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.fw{grid-column:1/-1;position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;cursor:pointer;background:#000;border:0;padding:0;box-shadow:0 24px 50px -24px var(--shadow);animation:rise .7s .05s backwards}
+.fw img,.fw video,.mini img{width:100%;height:100%;object-fit:cover;display:block}
+.fw video{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.fw .cap{position:absolute;inset:auto 0 0 0;padding:44px 18px 16px;background:linear-gradient(transparent,#000c);color:#fff;text-align:start}
+.fw .cap small{color:#ffb98a;font-weight:700}
+.fw .cap b{display:block;font:700 20px/1.3 var(--display)}
+.tagnew{position:absolute;top:14px;inset-inline-start:14px;background:var(--pill);color:var(--pill-ink);font:700 13px/1 var(--body);padding:7px 12px;border-radius:999px}
+.bigplay{position:absolute;top:50%;left:50%;translate:-50% -50%;width:74px;height:74px;border-radius:50%;background:#fff;color:#14151a;display:grid;place-items:center;box-shadow:0 10px 30px #0006;transition:.25s}
+.bigplay .playdot{border-width:11px 0 11px 18px;margin-left:5px}
+.fw:hover .bigplay{scale:1.1;background:var(--fox);color:#fff}
+.mini{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;grid-column:span 3;border:0;padding:0;cursor:pointer;background:var(--ph);animation:rise .7s .2s backwards}
+.mini img{object-position:top;transition:scale .5s}
+.mini:hover img{scale:1.05}
+.mini span{position:absolute;inset-inline-start:8px;bottom:8px;background:var(--pill);color:var(--pill-ink);border-radius:8px;padding:2px 10px;font-size:13px;font-weight:700}
+@keyframes rise{from{opacity:0;translate:0 16px}}
+
+.blk{padding-block:60px 0}
+.blk-h{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.blk-h h2{margin:0;font:700 clamp(28px,3.6vw,42px)/1.25 var(--display)}
+.blk-h span{color:var(--mute);font-size:14px}
+.blk-h p{flex-basis:100%;margin:2px 0 0;color:var(--mute);max-width:66ch;font-size:15px}
+
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,18vw,215px);gap:14px;grid-auto-flow:dense}
+.tile{position:relative;border:0;padding:0;border-radius:16px;overflow:hidden;cursor:pointer;background:var(--ph);min-width:0;text-align:start}
+.tile.b{grid-column:span 2;grid-row:span 2}.tile.w{grid-column:span 2}.tile.h{grid-row:span 2}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:scale .5s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img{scale:1.05}
+.tile .lbl{position:absolute;inset-inline:10px;bottom:10px;background:var(--pill);color:var(--pill-ink);border-radius:10px;padding:8px 12px;display:flex;flex-direction:column;line-height:1.4}
+.tile .lbl small{color:inherit;opacity:.8;font-weight:700;font-size:12px}
+.tile .lbl b{font:700 15px/1.4 var(--display)}
+.tile .tp{position:absolute;top:10px;inset-inline-start:10px;background:#14151a;color:#fff;border-radius:999px;width:34px;height:34px;display:grid;place-items:center}
+.tile .tp .playdot{border-width:5px 0 5px 8px;margin-left:2px}
+
+nav.chips{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:15;background:var(--bg-glass);border-bottom:1px solid var(--line);margin-top:64px}
+nav.chips .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.chips .wrap::-webkit-scrollbar{display:none}
+.chip{flex:none;border:0;background:none;cursor:pointer;padding:15px 14px 13px;font:700 15px/1 var(--body);color:var(--mute);border-bottom:3px solid transparent;white-space:nowrap}
+.chip:hover{color:var(--ink)}
+.chip[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--fox)}
+.chip span{font-weight:400;opacity:.65;margin-inline-start:6px;font-variant-numeric:tabular-nums}
+
+main{padding-block:0 8px}
+main section{padding-top:52px;scroll-margin-top:140px}
+.vnote{margin:36px 0 -14px;padding:12px 16px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:15px;display:flex;gap:10px;align-items:baseline}
+.vnote::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--fox);translate:0 -1px}
+.sec-h{display:grid;grid-template-columns:auto 1fr auto;gap:4px 16px;align-items:baseline;padding-bottom:16px;margin-bottom:22px;border-bottom:1.5px solid var(--ink)}
+.sec-h .no{font:700 18px/1 var(--display);color:var(--mute);font-variant-numeric:tabular-nums}
+.sec-h h2{margin:0;font:700 clamp(24px,3vw,34px)/1.3 var(--display)}
+.sec-h .ct{color:var(--mute);font-size:14px}
+.sec-h p{grid-column:2/-1;margin:0;color:var(--mute);font-size:15px;max-width:66ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:26px 20px}
+.grid.tall{grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr))}
+.card{display:block;width:100%;padding:0;text-align:start;border:0;background:none;cursor:pointer;min-width:0}
+.thumb{position:relative;border-radius:14px;overflow:hidden;background:var(--ph);aspect-ratio:16/9;transition:translate .25s,box-shadow .25s}
+.tall .thumb{aspect-ratio:9/16}
+.card.img .thumb{aspect-ratio:4/3}
+.thumb img,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+.thumb video{position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.thumb video.on{opacity:1}
+.card.img .thumb img{object-position:top}
+.card:hover .thumb,.card:focus-visible .thumb{translate:0 -4px;box-shadow:0 18px 30px -18px var(--shadow)}
+.meta{position:absolute;bottom:10px;inset-inline-start:10px;background:var(--pill);color:var(--pill-ink);border-radius:8px;padding:1px 9px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;z-index:2}
+.meta.full{background:var(--ink);color:var(--bg)}
+.pl{position:absolute;top:10px;inset-inline-end:10px;width:34px;height:34px;border-radius:50%;background:#14151a;color:#fff;display:grid;place-items:center;z-index:2}
+.pl .playdot{border-width:5px 0 5px 8px;margin-left:2px}
+.card b{display:block;margin-top:12px;font:700 18px/1.4 var(--display)}
+.card small{display:block;color:var(--mute);font-size:14px;line-height:1.6}
+
+/* مواقع وتطبيقات */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:20px}
+.site{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.site .shot{display:block;width:100%;padding:0;border:0;background:var(--ph);cursor:pointer;aspect-ratio:16/10;overflow:hidden}
+.site .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:scale .5s}
+.site .shot:hover img{scale:1.04}
+.site .bd{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.site h3{margin:0;font:700 20px/1.3 var(--display)}
+.site p{margin:0;color:var(--mute);font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.tech{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.tech li{font-size:12px;padding:0;color:var(--mute);font-weight:600;direction:ltr;unicode-bidi:isolate}
+.site .act{margin-top:auto;padding-top:8px}
+.site .btn{padding:9px 16px;font-size:14px}
+.soon{display:inline-block;font-size:13px;font-weight:700;color:var(--mute);border:1px dashed var(--line);border-radius:999px;padding:6px 14px}
+
+.rows{border-top:1.5px solid var(--ink)}
+.row{display:grid;grid-template-columns:64px 1fr 2fr auto;gap:8px 20px;align-items:baseline;padding-block:22px;border-bottom:1px solid var(--line);text-decoration:none}
+.row .n{font:700 22px/1 var(--display);color:var(--mute);font-variant-numeric:tabular-nums}
+.row h3{margin:0;font:700 22px/1.35 var(--display)}
+.row p{margin:0;color:var(--mute);font-size:15px}
+.row .go{font-weight:700;white-space:nowrap}
+a.row:hover h3{text-decoration:underline;text-underline-offset:6px}
+.fmt{margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:8px}
+.fmt h3{margin:0;font:700 20px/1.4 var(--display)}
+.fmt p{margin:0;color:var(--mute);max-width:75ch;font-size:15px}
+.fmt ul{margin:2px 0 0;padding-inline-start:20px;font-size:15px}
+
+.contact{margin-top:64px;border-radius:24px;background:var(--fox);color:#1a0c02;padding:clamp(34px,6vw,70px) clamp(20px,5vw,64px);display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.contact h2{margin:0 0 10px;font:700 clamp(32px,5vw,58px)/1.15 var(--display);text-wrap:balance}
+.contact p{margin:0;max-width:44ch;font-size:17px}
+.contact .side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.wa{display:inline-flex;align-items:center;gap:10px;background:#14151a;color:#fff;text-decoration:none;font:700 17px/1 var(--body);padding:17px 28px;border-radius:12px}
+.wa:hover{background:#000}
+.num{direction:ltr;unicode-bidi:isolate;font:700 clamp(26px,3.4vw,40px)/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-block:26px 36px;color:var(--mute);font-size:14px}
+footer .row2{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;align-items:center}
+footer .lg{height:32px}
+footer .copy{margin-top:12px;font-size:13px}
+
+/* العارض: داكن دائمًا */
+dialog{border:0;padding:0;background:#050506;max-width:none;max-height:none;width:100%;height:100%;color:#f3efe9}
+dialog::backdrop{background:#000e}
+.lb{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:8px;padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb-top div{min-width:0}
+.lb-top b{font:700 18px/1.3 var(--display)}
+.lb-top small{display:block;color:#a3a7b3}
+.stage{position:relative;min-height:0;display:grid}
+.stage video{width:100%;height:100%;object-fit:contain;background:#000;border-radius:10px;align-self:center;min-height:0}
+.end{position:absolute;inset:0;border-radius:10px;background:#000d;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;text-align:center;padding:20px}
+.end p{margin:0;max-width:34ch;font:700 clamp(18px,2.6vw,26px)/1.5 var(--display);text-wrap:balance}
+.end .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.end[hidden],.tlw[hidden]{display:none}
+.tlw{display:grid;gap:6px;padding-top:2px}
+.tl{position:relative;height:6px;border-radius:99px;background:#ffffff30;overflow:hidden;direction:ltr}
+.tl i{position:absolute;top:0;bottom:0;background:var(--fox);border-radius:99px}
+.tl b{position:absolute;top:0;bottom:0;width:3px;background:#fff;left:0}
+.tlw small{color:#cfcbc3;font-size:13px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.lb-nav{display:flex;justify-content:center;gap:10px}
+.lb .icon{border:1px solid #333743;background:#17191f;color:#f3efe9;border-radius:10px;padding:8px 16px;cursor:pointer;font:inherit}
+.sl{width:100%;height:100%;display:grid;grid-template-rows:1fr;min-height:0}
+.sl .pane{overflow:auto;border-radius:10px;background:#111;display:grid;place-items:start center;min-height:0}
+.sl img{max-width:100%;height:auto;display:block}
+.sl.fit .pane{place-items:center}
+.sl.fit img{max-height:calc(100vh - 150px);width:auto;object-fit:contain}
+.stage[hidden],.sl[hidden]{display:none}
+
+@media (max-width:860px){
+  .menu{display:grid}
+  .hero{padding-block:30px 24px}.hero .wrap{grid-template-columns:1fr;gap:30px}
+  .top nav{display:none}.top .tools{margin-inline-start:auto}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .row{grid-template-columns:40px 1fr}.row p{grid-column:2}.row .go{display:none}
+  .contact{grid-template-columns:1fr}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stats li{padding:12px 6px;margin:0}
+  .stats li:first-child{padding-inline-start:0}
+  .stats strong{font-size:26px}
+  .stats span{font-size:12px;line-height:1.4;display:block}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div>
+<header class="top"><div class="wrap">
+  <a href="#" aria-label="M.K Studio"><img class="lg lg-l" src="assets/logo_light.svg" alt="M.K Studio" width="52" height="40"><img class="lg lg-d" src="assets/logo_inverse.svg" alt="" width="52" height="40"></a>
+  <nav aria-label="الصفحة"><a href="#picks" data-go="">أبرز الأعمال</a><a href="#works" data-go="الكل">كل الأعمال</a><a href="#sites" data-go="مواقع وتطبيقات">مواقع وتطبيقات</a><a href="#services" data-go="">الخدمات</a><a href="#contact" data-go="">تواصل</a></nav>
+  <div class="tools">
+    <button class="theme" id="theme" type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <a class="btn" href="https://wa.me/201147320608" target="_blank" rel="noopener">واتساب</a>
+    <button class="menu" id="menu" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="mnav"><svg class="b" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+<div class="mnav" id="mnav" hidden><a href="#picks" data-go="">أبرز الأعمال</a><a href="#works" data-go="الكل">كل الأعمال</a><a href="#sites" data-go="مواقع وتطبيقات">مواقع وتطبيقات</a><a href="#services" data-go="">الخدمات</a><a href="#contact" data-go="">تواصل</a><a class="btn" href="https://wa.me/201147320608" target="_blank" rel="noopener">واتساب</a></div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>أفلام وتصاميم وعروض وتحليل بيانات <u>لمن يريد أن يُرى بوضوح</u></h1>
+    <p class="lead">مسلسلات كرتونية وأفلام قصيرة بالذكاء الاصطناعي، ومجلات وإنفوجرافيك وهويات بصرية، وعروض تقديمية وتحليل بيانات، ومواقع وتطبيقات ويب. من الفكرة إلى الإخراج.</p>
+    <div class="cta"><a class="btn solid" href="#picks">شاهد أبرز الأعمال</a><a class="btn" href="https://wa.me/201147320608" target="_blank" rel="noopener">ابدأ مشروعك</a></div>
+    <p class="more" id="moreT">مختارات من أعمالي، والمزيد متاح عند الطلب. <a id="moreWa" target="_blank" rel="noopener">اطلب المزيد</a></p>
+  </div>
+  <div class="collage" id="collage"></div>
+</div></section>
+
+<div class="wrap blk" id="picks"></div>
+
+<nav class="chips" id="works" aria-label="الأقسام"><div class="wrap" id="chips"></div></nav>
+<main class="wrap" id="main"></main>
+
+<div class="wrap">
+  <section class="blk" id="services">
+    <div class="blk-h"><h2>الخدمات</h2><p>خمسة مسارات، وكل مسار يبدأ من فكرتك وينتهي بملف أو موقع جاهز للنشر أو العرض.</p></div>
+    <div class="rows" id="svcs"></div>
+    <div class="fmt"><h3>تنسيق الملفات وتحسينها</h3><p>أنسّق ملفات Word وPowerPoint وPDF وأرتّبها على دليل الجهة أو الجامعة. المحتوى كما هو، والتنسيق هو ما يتغيّر.</p><ul><li>خطوط وعناوين وفقرات موحّدة، واتجاه صحيح للعربية والإنجليزية</li><li>جداول وأشكال وصور بترقيم وعناوين ثابتة</li><li>فهرس وأغلفة وأرقام صفحات وقوائم المراجع</li><li>إصلاح الملفات التي تتبعثر أو تتغيّر عند فتحها على جهاز آخر</li></ul><p>أعمال العملاء في هذا المجال لا تُعرض حفاظًا على خصوصيتهم.</p></div>
+  </section>
+  <div class="contact" id="contact">
+    <div><h2>لنبدأ عملك</h2><p>راسلني على واتساب بفكرتك أو بملفاتك، وأرد عليك بالتفاصيل.</p></div>
+    <div class="side"><a class="wa" href="https://wa.me/201147320608" target="_blank" rel="noopener">تواصل عبر واتساب</a><div class="num">+20 1147320608</div></div>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <div class="row2"><span><img class="lg lg-l" src="assets/logo_light.svg" alt="M.K Studio" width="41" height="32"><img class="lg lg-d" src="assets/logo_inverse.svg" alt="" width="41" height="32"></span><span>أعمال العملاء المعروضة هنا بإذنهم، وملفات العملاء الخاصة لا تُعرض</span></div>
+  <div class="copy">جميع الأعمال © 2026 M.K Studio، لا يجوز إعادة استخدامها أو نشرها دون إذن.</div>
+</div></footer>
+
+<dialog id="lb" aria-label="العارض"><div class="lb">
+  <div class="lb-top"><div><b id="lbT"></b><small id="lbD"></small></div><button class="icon" id="lbX" aria-label="إغلاق">إغلاق ✕</button></div>
+  <div class="stage" id="stage"><video id="v" controls playsinline preload="none"></video>
+    <div class="end" id="end" hidden><p id="endT"></p><div class="acts"><a class="btn fox" id="endWa" target="_blank" rel="noopener">اطلب النسخة الكاملة</a><button class="btn" id="endAgain" type="button" style="color:#f3efe9;border-color:#f3efe9">إعادة اللمحة</button><button class="btn" id="endFull" type="button" hidden style="color:#f3efe9;border-color:#f3efe9">شاهد الكامل</button></div></div>
+  </div>
+  <div class="sl" id="sl" hidden><div class="pane" id="pane"><img id="im" alt=""></div></div>
+  <div class="tlw" id="tlw" hidden><div class="tl" id="tl" role="img" aria-label="موضع اللمحة داخل العمل"><i id="tlSeg"></i><b id="tlPos"></b></div><small><span id="tlTxt"></span><span id="tlFull"></span></small></div>
+  <div class="lb-nav"><button class="icon" id="lbP">السابق</button><button class="icon" id="lbN">التالي</button></div>
+</div></dialog>
+</div>
+
+<script>const CFG={"total": 300};const WORKS=[{"cat": "حكايات من تراثنا", "title": "سالفة من زمان", "desc": "الحلقة الأولى، كرتون تراثي", "poster": "posters/v01.webp", "dur": 168, "id": "v01", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/v01_t.mp4", "start": 40.55, "end": 68.38, "dur": 27.83, "full_dur": 168.1}}, {"cat": "حكايات من تراثنا", "title": "رحلة في نجد", "desc": "الحلقة الثانية، كرتون تراثي", "poster": "posters/v02.webp", "dur": 166, "id": "v02", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/v02_t.mp4", "start": 63.05, "end": 89.0, "dur": 25.95, "full_dur": 165.6}}, {"cat": "حكايات من تراثنا", "title": "حكاية من البحر", "desc": "الحلقة الثالثة، كرتون تراثي", "poster": "posters/v03.webp", "dur": 160, "id": "v03", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/v03_t.mp4", "start": 28.38, "end": 54.7, "dur": 26.32, "full_dur": 159.9}}, {"cat": "فيديوهات المهندس", "title": "بيتك بأقل تكلفة (واقعي)", "desc": "فيديو توعوي لبلدية مدينة المُدام، شخصية واقعية", "poster": "posters/e1.webp", "dur": 90, "id": "e1", "w": 406, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/e1_t.mp4", "start": 38.75, "end": 64.88, "dur": 26.13, "full_dur": 90.1}}, {"cat": "فيديوهات المهندس", "title": "بيتك بأقل تكلفة (كرتون)", "desc": "فيديو توعوي لبلدية مدينة المُدام، شخصية كرتونية", "poster": "posters/e2.webp", "dur": 98, "id": "e2", "w": 406, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/e2_t.mp4", "start": 36.62, "end": 60.62, "dur": 24.0, "full_dur": 98.3}}, {"cat": "فيديوهات المهندس", "title": "أخطاء البناء (كرتون)", "desc": "فيديو توعوي لبلدية مدينة المُدام، شخصية كرتونية", "poster": "posters/e3.webp", "dur": 167, "id": "e3", "w": 406, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/e3_t.mp4", "start": 112.38, "end": 135.38, "dur": 23.0, "full_dur": 167.3}}, {"cat": "أكثر من شاشة", "title": "أكثر من شاشة", "desc": "فيلم واقعي قصير: حوار بين أخ وأخته عن العمل في الإعلام", "poster": "posters/f1.webp", "dur": 206, "id": "f1", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/f1_t.mp4", "start": 139.25, "end": 162.95, "dur": 23.7, "full_dur": 205.8}}, {"cat": "رسوم متحركة", "title": "الشايب", "desc": "رسوم كرتونية بصوت مصري", "file": "media/m1.mp4", "poster": "posters/m1.webp", "dur": 15, "id": "m1", "w": 406, "h": 720, "group": "فيديو", "kind": "video"}, {"cat": "رسوم متحركة", "title": "الأخطبوط", "desc": "رسوم متحركة قصيرة", "file": "media/m2.mp4", "poster": "posters/m2.webp", "dur": 14, "id": "m2", "w": 1280, "h": 720, "group": "فيديو", "kind": "video"}, {"cat": "رسوم متحركة", "title": "قصة ثلاثية الأبعاد", "desc": "رسوم متحركة ثلاثية الأبعاد بالعربية", "file": "media/m3.mp4", "poster": "posters/m3.webp", "dur": 10, "id": "m3", "w": 406, "h": 720, "group": "فيديو", "kind": "video"}, {"cat": "رسوم متحركة", "title": "رحلة النيل", "desc": "خريطة متحركة بالعربية", "file": "media/m4.mp4", "poster": "posters/m4.webp", "dur": 13, "id": "m4", "w": 406, "h": 720, "group": "فيديو", "kind": "video"}, {"cat": "فيديو تعليمي", "title": "علامات الترقيم", "desc": "فيديو تعليمي متحرك بتعليق صوتي ومؤثرات", "poster": "posters/t1.webp", "dur": 171, "id": "t1", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/t1_t.mp4", "start": 10.53, "end": 36.53, "dur": 26.0, "full_dur": 170.6}}, {"cat": "بودكاست", "title": "خلف الكواليس", "desc": "الحلقة الأولى، فريق شمسة", "poster": "posters/v14.webp", "dur": 505, "id": "v14", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/v14_t.mp4", "start": 62.05, "end": 84.95, "dur": 22.9, "full_dur": 505.3}}, {"cat": "بودكاست", "title": "فلاتر السعادة", "desc": "الحلقة الأولى", "poster": "posters/v15.webp", "dur": 270, "id": "v15", "w": 1280, "h": 720, "group": "فيديو", "kind": "video", "teaser": {"file": "media/v15_t.mp4", "start": 52.55, "end": 75.95, "dur": 23.4, "full_dur": 270.0}}, {"cat": "عرض أعمال", "title": "معرض أخبار الإمارات المجتمعية", "desc": "فيديو عرض أعمال شمسة وفريقها، 60 ثانية", "file": "media/v16.mp4", "poster": "posters/v16.webp", "dur": 60, "id": "v16", "w": 1280, "h": 720, "group": "فيديو", "kind": "video"}, {"id": "g1", "group": "تصميم", "cat": "مجلات", "title": "مجلة سدرة", "desc": "مجلة جامعية، العدد الأول", "kind": "images", "poster": "works/g1/thumb.webp", "images": ["works/g1/p1.webp", "works/g1/p2.webp", "works/g1/p3.webp", "works/g1/p4.webp", "works/g1/p5.webp"], "tall": false}, {"id": "g2", "group": "تصميم", "cat": "مجلات", "title": "مجلة نظام نور", "desc": "مجلة إلكترونية عن نظام إدارة التعليم", "kind": "images", "poster": "works/g2/thumb.webp", "images": ["works/g2/p1.webp", "works/g2/p2.webp", "works/g2/p3.webp", "works/g2/p4.webp", "works/g2/p5.webp", "works/g2/p6.webp"], "tall": false}, {"id": "g3", "group": "تصميم", "cat": "مجلات", "title": "مجلة ملصقات الكيمياء", "desc": "مجلة ملصقات تحفيزية لمادة الكيمياء", "kind": "images", "poster": "works/g3/thumb.webp", "images": ["works/g3/p1.webp", "works/g3/p2.webp", "works/g3/p3.webp", "works/g3/p4.webp", "works/g3/p5.webp"], "tall": false}, {"id": "g4", "group": "تصميم", "cat": "إنفوجرافيك", "title": "هل هذا عملك؟", "desc": "إنفوجرافيك توعوي", "kind": "images", "poster": "works/g4/thumb.webp", "images": ["works/g4/p1.webp"], "tall": false}, {"id": "g5", "group": "تصميم", "cat": "إنفوجرافيك", "title": "قبل 125 ألف سنة", "desc": "إنفوجرافيك تعريفي", "kind": "images", "poster": "works/g5/thumb.webp", "images": ["works/g5/p1.webp"], "tall": true}, {"id": "g6", "group": "تصميم", "cat": "إنفوجرافيك", "title": "رسالة واحدة قد تكون الأخيرة", "desc": "إنفوجرافيك توعوي", "kind": "images", "poster": "works/g6/thumb.webp", "images": ["works/g6/p1.webp"], "tall": true}, {"id": "g7", "group": "تصميم", "cat": "إنفوجرافيك", "title": "ماذا يعرف عنك تطبيقك؟", "desc": "إنفوجرافيك توعوي", "kind": "images", "poster": "works/g7/thumb.webp", "images": ["works/g7/p1.webp"], "tall": true}, {"id": "g9", "group": "تصميم", "cat": "إنفوجرافيك", "title": "أنت تحترق ببطء", "desc": "إنفوجرافيك صحي", "kind": "images", "poster": "works/g9/thumb.webp", "images": ["works/g9/p1.webp"], "tall": true}, {"id": "g10", "group": "تصميم", "cat": "ملصقات ومنشورات", "title": "ملصقات التعزيز الكيميائي", "desc": "ملصقات تحفيزية", "kind": "images", "poster": "works/g10/thumb.webp", "images": ["works/g10/p1.webp"], "tall": false}, {"id": "g11", "group": "تصميم", "cat": "ملصقات ومنشورات", "title": "ملصق حبّة", "desc": "ملصق إعلاني لعلامة قهوة مختصة", "kind": "images", "poster": "works/g11/thumb.webp", "images": ["works/g11/p1.webp"], "tall": false}, {"id": "g12", "group": "تصميم", "cat": "ملصقات ومنشورات", "title": "خمس مبادرات لأمن دبي الغذائي", "desc": "منشور إخباري لعلامة زاد", "kind": "images", "poster": "works/g12/thumb.webp", "images": ["works/g12/p1.webp"], "tall": false}, {"id": "g14", "group": "تصميم", "cat": "هويات بصرية", "title": "هوية حبّة", "desc": "شعار وأدوات مكتبية وكوب وإعلان طريق", "kind": "images", "poster": "works/g14/thumb.webp", "images": ["works/g14/p1.webp", "works/g14/p2.webp", "works/g14/p3.webp", "works/g14/p4.webp"], "tall": false}, {"id": "g15", "group": "تصميم", "cat": "هويات بصرية", "title": "هوية مدار", "desc": "شعار واتجاه التصميم", "kind": "images", "poster": "works/g15/thumb.webp", "images": ["works/g15/p1.webp", "works/g15/p2.webp"], "tall": false}, {"id": "g16", "group": "تصميم", "cat": "هويات بصرية", "title": "هوية زاد", "desc": "شعار وغلاف وصورة حساب", "kind": "images", "poster": "works/g16/thumb.webp", "images": ["works/g16/p1.webp", "works/g16/p2.webp", "works/g16/p3.webp"], "tall": false}, {"id": "g17", "group": "عروض وبيانات", "cat": "تحليل بيانات", "title": "لوحة Power BI: النقل في الخليج", "desc": "تحليل بيانات النقل الجوي والبحري", "kind": "images", "poster": "works/g17/thumb.webp", "images": ["works/g17/p1.webp", "works/g17/p2.webp", "works/g17/p3.webp"], "tall": false}, {"id": "g18", "group": "عروض وبيانات", "cat": "عروض تقديمية", "title": "سَنَد: مساعدة دراسية جامعية", "desc": "عرض مشروع ريادي", "kind": "images", "poster": "works/g18/thumb.webp", "images": ["works/g18/p1.webp", "works/g18/p2.webp", "works/g18/p3.webp", "works/g18/p4.webp", "works/g18/p5.webp", "works/g18/p6.webp"], "tall": false}, {"id": "g20", "group": "عروض وبيانات", "cat": "عروض تقديمية", "title": "برنامج تدريبي في تنمية الموارد البشرية", "desc": "عرض برنامج تدريبي من خمسة أيام", "kind": "images", "poster": "works/g20/thumb.webp", "images": ["works/g20/p1.webp", "works/g20/p2.webp", "works/g20/p3.webp"], "tall": false}, {"id": "g21", "group": "عروض وبيانات", "cat": "عروض تقديمية", "title": "حزمة أدوات تعزز تراثنا", "desc": "عرض تلخيصي لكتاب عن التراث العالمي", "kind": "images", "poster": "works/g21/thumb.webp", "images": ["works/g21/p1.webp", "works/g21/p2.webp", "works/g21/p3.webp", "works/g21/p4.webp", "works/g21/p5.webp", "works/g21/p6.webp"], "tall": false}, {"id": "g22", "group": "عروض وبيانات", "cat": "عروض تقديمية", "title": "دلّة: محمصة قهوة", "desc": "عرض مشروع ريادي", "kind": "images", "poster": "works/g22/thumb.webp", "images": ["works/g22/p1.webp", "works/g22/p2.webp", "works/g22/p3.webp", "works/g22/p4.webp", "works/g22/p5.webp", "works/g22/p6.webp"], "tall": false}];</script>
+<script>const SITES_DATA=[{"id": "skillgrow", "title": "SkillGrow", "show": true, "url": null, "poster": "sites/skillgrow.webp", "status": "قيد النشر", "desc": "منصة دورات تعليمية: تصفّح الدورات وحفظ المفضلة وشراء دورة عبر نافذة دفع تجريبية، مع تسجيل حساب ودخول وجلسة محفوظة.", "tech": "React · Tailwind CSS · Vite"}, {"id": "smartqr", "title": "Smart QR", "show": true, "url": null, "poster": "sites/smartqr.webp", "status": "قيد النشر", "desc": "أداة لتوليد رموز QR لسبعة أنواع (رسالة، نص، رابط، هاتف، بريد، واي فاي، بطاقة اتصال) مع معاينة فورية وألوان وحجم من 100 إلى 500 بكسل، وتنزيل PNG ومشاركة وسجل للرموز السابقة.", "tech": "JavaScript ES Modules · qrcode.js · CSS"}, {"id": "starcatcher", "title": "Star Catcher", "show": true, "url": null, "poster": "sites/starcatcher.webp", "status": "قيد النشر", "desc": "لعبة ويب: تحرّك السلة لالتقاط النجوم وتفادي القنابل، ثلاث محاولات، وتزداد السرعة مع كل مستوى. تعمل بلوحة المفاتيح أو الفأرة أو اللمس.", "tech": "JavaScript · Canvas"}, {"id": "masarak", "title": "مسارك", "show": true, "url": null, "poster": "sites/masarak.webp", "status": "قيد النشر", "desc": "دليل لمبنى الكلية بأدواره الثلاثة: بحث عن قاعة أو مكتب برقمه، وخرائط تفاعلية لكل دور تعرض أرقام الغرف ونوعها.", "tech": "HTML · CSS · JavaScript"}, {"id": "jamiati", "title": "جامعتي", "show": true, "url": null, "poster": "sites/jamiati.webp", "status": "قيد النشر", "desc": "موقع جامعي من خمس صفحات: بنك ملخصات المقررات حسب الفصل، وسوق للكتب والأدوات المستعملة، وخطط تدريبية، وتسجيل دخول.", "tech": "HTML · CSS · JavaScript"}, {"id": "ektashif", "title": "اكتشف البلد", "show": true, "url": null, "poster": "sites/ektashif.webp", "status": "قيد النشر", "desc": "موقع سياحي عن جدة التاريخية «البلد»: تاريخها ومعالمها وأسواقها، وتخطيط زيارة وتقييمات الزوار.", "tech": "HTML · CSS · JavaScript · PHP · MySQL"}, {"id": "pixelart", "title": "Pixel Art", "show": true, "url": null, "poster": "sites/pixelart.webp", "status": "قيد النشر", "desc": "محرر رسم بالبكسل: تختار عرض الشبكة وارتفاعها من 1 إلى 35 خانة، ثم ترسم بلون تختاره أو تمسح خانة أو تفرغ اللوحة.", "tech": "HTML · CSS · JavaScript"}, {"id": "passgen", "title": "Password Generator", "show": true, "url": null, "poster": "sites/passgen.webp", "status": "قيد النشر", "desc": "مولّد كلمات مرور بطول يحدده شريط، مع خيارات الأحرف الصغيرة والكبيرة والأرقام والرموز والمسافات واستبعاد المكرر، ومؤشر قوة ونسخ بنقرة.", "tech": "HTML · CSS · JavaScript"}];</script>
+<script>
+const SECTIONS={
+ "حكايات من تراثنا":"مسلسل كرتوني قصير: جدّ يحكي لحفيده عن الحياة القديمة في البحر ونجد.",
+ "فيديوهات المهندس":"فيديوهات توعوية لبلدية مدينة المُدام عن البناء، بشخصية واقعية ثم كرتونية.",
+ "أكثر من شاشة":"فيلم واقعي قصير بشخصيات مولّدة: أخت تعمل في الإعلام وأخ يقلق عليها ثم يفخر بها.",
+ "رسوم متحركة":"تجارب قصيرة بأساليب مختلفة: كرتون مرسوم، ورسوم ثلاثية الأبعاد، وخرائط متحركة.",
+ "فيديو تعليمي":"شرح مادة دراسية بفيديو متحرك مع مؤثرات وموسيقى.",
+ "بودكاست":"حلقات بودكاست مصوّرة بشخصيات مولّدة.",
+ "عرض أعمال":"فيديو يعرض مشروع فريق طلابي بصوت معلّق.",
+ "مجلات":"تصميم وإخراج مجلات كاملة: غلاف وصفحات داخلية.",
+ "إنفوجرافيك":"إنفوجرافيك طويل بفكرة وألوان مختلفة لكل عمل.",
+ "ملصقات ومنشورات":"ملصقات ومنشورات لمنصات التواصل والطباعة.",
+ "هويات بصرية":"شعار وتطبيقاته: أدوات مكتبية، عبوات، إعلانات.",
+ "تحليل بيانات":"لوحات تحليل بيانات تفاعلية ورسوم بيانية.",
+ "عروض تقديمية":"عروض بتصميم متكامل، من الفكرة إلى الشرائح."
+};
+const FEATURE="f1",WA="201147320608",WAD="01147320608",SG="مواقع وتطبيقات";
+const BENTO=[["g1","b"],["v01","w"],["g5","h"],["g14",""],["t1",""],["g22",""],["v03",""]];
+const VNOTE="تُعرض الأعمال هنا كلمحات قصيرة، والنسخ الكاملة بجودتها الأصلية متاحة للعملاء.";
+const $=s=>document.querySelector(s);
+const fmt=s=>{s=Math.round(s);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const count=n=>n===1?"عمل واحد":n===2?"عملان":n<11?n+" أعمال":n+" عملًا";
+/* العدد والمعدود: [مفرد، مثنى، 3-10، 11+] */
+const lab=(n,f)=>n===1?f[0]:n===2?f[1]:n<11?n+" "+f[2]:n+" "+f[3];
+const imgLab=n=>lab(n,["صورة","صورتان","صور","صورة"]);
+const N=n=>String(n).padStart(2,"0");
+const groups=[...new Set(WORKS.map(w=>w.group))];
+const catsOf=g=>[...new Set(WORKS.filter(w=>g==="الكل"||w.group===g).map(w=>w.cat))];
+const isImg=w=>w.kind==="images";
+const tall=w=>!isImg(w)&&w.h>w.w;
+const byId=id=>WORKS.find(w=>w.id===id);
+const vids=WORKS.filter(w=>!isImg(w)),designs=WORKS.length-vids.length;
+const mins=Math.round(vids.reduce((a,w)=>a+w.dur,0)/60);
+const SITES=(typeof SITES_DATA!=="undefined"?SITES_DATA:[]).filter(s=>s.show);
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const saveData=!!(navigator.connection&&navigator.connection.saveData);
+const canHover=matchMedia("(hover:hover) and (pointer:fine)").matches;
+let cur="الكل";
+
+/* الوضع الفاتح/الداكن: يتبع النظام، والزر يحفظ اختيار المتصفح */
+(function(){
+  const root=document.documentElement;
+  try{const s=localStorage.getItem("mk-theme");if(s==="dark"||s==="light")root.dataset.theme=s}catch(e){}
+  $("#theme").onclick=()=>{
+    const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+    const n=dark?"light":"dark";root.dataset.theme=n;
+    try{localStorage.setItem("mk-theme",n)}catch(e){}
+  };
+})();
+
+/* ===== العارض ===== */
+let list=WORKS,idx=0,pg=0;
+const lb=$("#lb"),v=$("#v"),sl=$("#sl"),im=$("#im"),pane=$("#pane"),stage=$("#stage"),end=$("#end"),tlw=$("#tlw");
+const waMsg=w=>"https://wa.me/"+WA+"?text="+encodeURIComponent("مرحبًا، أريد النسخة الكاملة ("+fmt(w.teaser.full_dur)+") من عمل «"+w.title+"» الذي شاهدته في معرض M.K Studio.");
+let playingFull=false;
+function playSrc(w,full){
+  end.hidden=true;playingFull=full;
+  v.poster=w.poster;v.src=full?w.file:(w.teaser?w.teaser.file:w.file);v.play().catch(()=>{});
+}
+function show(){
+  const w=list[idx];
+  $("#lbT").textContent=w.title;
+  const one=isImg(w)&&w.images.length>1;
+  $("#lbP").hidden=$("#lbN").hidden=isImg(w)?!one&&list.length<2:list.length<2;
+  tlw.hidden=true;end.hidden=true;
+  if(isImg(w)){
+    v.pause();v.removeAttribute("src");stage.hidden=true;sl.hidden=false;
+    im.src=w.images[pg];pane.scrollTop=0;sl.classList.toggle("fit",!w.tall&&w.images.length>0);
+    $("#lbD").textContent=w.desc+(one?" · "+(pg+1)+" من "+w.images.length:"");
+  }else{
+    sl.hidden=true;stage.hidden=false;
+    const t=w.teaser;
+    $("#lbD").textContent=w.desc+(t?" · لمحة "+fmt(t.dur)+" من "+fmt(t.full_dur):" · "+fmt(w.dur));
+    if(t){
+      tlw.hidden=false;
+      $("#tlSeg").style.cssText="left:"+(t.start/t.full_dur*100)+"%;width:"+((t.end-t.start)/t.full_dur*100)+"%";
+      $("#tlPos").style.left=(t.start/t.full_dur*100)+"%";
+      $("#tlTxt").textContent="من "+fmt(t.start)+" إلى "+fmt(t.end);
+      $("#tlFull").textContent="العمل كاملًا "+fmt(t.full_dur);
+    }
+    playSrc(w,false);
+  }
+}
+v.addEventListener("timeupdate",()=>{const w=list[idx],t=w&&w.teaser;if(t&&!playingFull&&v.duration){$("#tlPos").style.left=((t.start+v.currentTime/v.duration*(t.end-t.start))/t.full_dur*100)+"%"}});
+v.addEventListener("ended",()=>{
+  const w=list[idx];if(!w||!w.teaser||playingFull)return;
+  $("#endT").textContent="هذه لمحة من العمل. النسخة الكاملة ("+fmt(w.teaser.full_dur)+") تُرسل عند الطلب.";
+  $("#endWa").href=waMsg(w);$("#endFull").hidden=!w.file;end.hidden=false;
+});
+$("#endAgain").onclick=()=>{v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
+$("#endFull").onclick=()=>{const w=list[idx];tlw.hidden=true;playSrc(w,true)};
+function openWork(L,i){list=L;idx=i;pg=0;if(!lb.open)lb.showModal();show()}
+function openId(id){const w=byId(id);const L=WORKS.filter(x=>x.cat===w.cat);openWork(L,L.indexOf(w))}
+function closeLb(){v.pause();v.removeAttribute("src");v.load();lb.close()}
+function step(d){
+  const w=list[idx];
+  if(isImg(w)&&w.images.length>1){const n=pg+d;if(n>=0&&n<w.images.length){pg=n;show();return}}
+  idx=(idx+d+list.length)%list.length;pg=d<0&&isImg(list[idx])?list[idx].images.length-1:0;show();
+}
+$("#lbX").onclick=closeLb;lb.addEventListener("cancel",e=>{e.preventDefault();closeLb()});
+lb.onclick=e=>{if(e.target===lb)closeLb()};
+$("#lbN").onclick=()=>step(1);$("#lbP").onclick=()=>step(-1);
+document.addEventListener("keydown",e=>{if(!lb.open)return;if(e.key==="ArrowLeft")step(1);if(e.key==="ArrowRight")step(-1)});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-open]");if(b){openId(b.dataset.open);return}
+  const s=e.target.closest("[data-site]");if(s){const x=SITES[+s.dataset.site];openWork([{title:x.title,desc:x.tech,kind:"images",images:[x.poster],tall:false}],0);return}
+  const g=e.target.closest("[data-go]");if(g){e.preventDefault();goto(g.dataset.go,g.getAttribute("href"))}
+});
+
+/* قائمة الجوال */
+const mb=$("#menu"),mn=$("#mnav");
+function menu(o){mn.hidden=!o;mb.setAttribute("aria-expanded",o)}
+mb.onclick=e=>{e.stopPropagation();menu(mn.hidden)};
+mn.addEventListener("click",e=>{if(e.target.closest("a"))menu(false)});
+document.addEventListener("click",e=>{if(!mn.hidden&&!mn.contains(e.target)&&!mb.contains(e.target))menu(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!mn.hidden){menu(false);mb.focus()}});
+matchMedia("(min-width:861px)").addEventListener("change",e=>{if(e.matches)menu(false)});
+
+/* ===== معاينة صامتة للبطاقات: hover على الحاسوب، والظهور على الجوال ===== */
+const live=new Set();
+function pv(el,on){
+  const vd=el.querySelector("video");if(!vd)return;
+  if(on){
+    if(!vd.src)vd.src=vd.dataset.src;
+    vd.play().then(()=>vd.classList.add("on")).catch(()=>{});live.add(vd);
+    if(live.size>2){const o=live.values().next().value;if(o!==vd)pvStop(o)}
+  }else pvStop(vd);
+}
+function pvStop(vd){vd.pause();vd.classList.remove("on");live.delete(vd)}
+let io=null;
+function wirePreview(root){
+  if(reduce||saveData)return;
+  root.querySelectorAll(".thumb[data-pv]").forEach(t=>{
+    if(canHover){t.parentElement.addEventListener("mouseenter",()=>pv(t,true));t.parentElement.addEventListener("mouseleave",()=>pv(t,false))}
+    else{io=io||new IntersectionObserver(es=>es.forEach(x=>pv(x.target,x.isIntersecting)),{threshold:.7});io.observe(t)}
+  });
+}
+
+/* ===== الشريط العلوي والإحصاءات ===== */
+const SV=[
+ ["فيديو بالذكاء الاصطناعي","مسلسلات كرتونية وأفلام قصيرة وبودكاست مصوّر وفيديو تعليمي، بشخصيات وأصوات وموسيقى.","فيديو"],
+ ["تصميم وهويات","مجلات وإنفوجرافيك وملصقات، وشعار وتطبيقاته من أدوات مكتبية وعبوات.","تصميم"],
+ ["عروض وتحليل بيانات","عروض تقديمية بتصميم متكامل، ولوحات Power BI تحوّل الأرقام إلى قرار.","عروض وبيانات"],
+ ["مواقع وتطبيقات ويب","منصات وأدوات تعمل في المتصفح، من واجهة عربية واضحة إلى منطق وقاعدة بيانات.",SG],
+];
+$("#svcs").innerHTML=SV.map((s,i)=>`<a class="row" href="#works" data-go="${esc(s[2])}"><span class="n">${N(i+1)}</span><h3>${s[0]}</h3><p>${s[1]}</p><span class="go">شاهد الأعمال ←</span></a>`).join("")
+ +`<a class="row" href="#contact"><span class="n">05</span><h3>تنسيق الملفات</h3><p>ملفات Word وPowerPoint وPDF مرتّبة على دليل الجهة أو الجامعة.</p><span class="go">اطلب تنسيقًا ←</span></a>`;
+$("#moreT").firstChild.textContent="مختارات من أكثر من "+CFG.total+" عمل، والمزيد متاح عند الطلب. ";
+$("#moreWa").href="https://wa.me/"+WA+"?text="+encodeURIComponent("مرحبًا، شاهدت مختارات من أعمالكم في معرض M.K Studio وأريد الاطلاع على المزيد من الأعمال.");
+
+/* ===== الهيرو: الفيلم المميز مع هويتين ===== */
+const f=byId(FEATURE), m1=byId("g1"), m2=byId("g14");
+const lamha=w=>w.teaser?`لمحة ${fmt(w.teaser.dur)} من ${fmt(w.teaser.full_dur)}`:fmt(w.dur);
+const mini=w=>`<button class="mini" data-open="${w.id}"><img src="${w.poster}" alt="" loading="lazy"><span>${esc(w.title)}</span></button>`;
+$("#collage").innerHTML=`<button class="fw" data-open="${f.id}" id="fw"><img src="${f.poster}" alt="" fetchpriority="high"><video id="fwv" muted loop playsinline preload="none" aria-hidden="true"></video><span class="tagnew">الفيلم المميز</span><span class="bigplay"><span class="playdot"></span></span><span class="cap"><small>${esc(f.cat)} · ${lamha(f)}</small><b>${esc(f.title)}</b></span></button>`+mini(m1)+mini(m2);
+(function(){
+  if(reduce||saveData)return;
+  const hv=$("#fwv"),src=f.teaser?f.teaser.file:f.file;if(!src)return;
+  const go=()=>setTimeout(()=>{hv.src=src;hv.play().then(()=>{hv.style.opacity=1},()=>{})},400);
+  if(document.readyState==="complete")go();else addEventListener("load",go,{once:true});
+  new IntersectionObserver(es=>es.forEach(x=>{if(!hv.src)return;x.isIntersecting?hv.play().catch(()=>{}):hv.pause()})).observe($("#fw"));
+})();
+
+$("#picks").innerHTML=`<div class="blk-h"><h2>أبرز الأعمال</h2></div><div class="bento">`+BENTO.map(([id,k])=>{const w=byId(id);return `<button class="tile ${k}" data-open="${id}"><img src="${w.poster}" alt="" loading="lazy" decoding="async">${isImg(w)?"":`<span class="tp"><span class="playdot"></span></span>`}<span class="lbl"><small>${esc(w.cat)}${w.teaser?" · لمحة":""}</small><b>${esc(w.title)}</b></span></button>`}).join("")+`</div>`;
+
+/* ===== الأعمال ===== */
+function card(w){
+  const hasPv=!isImg(w)&&(w.teaser||w.file);
+  const pvSrc=w.teaser?w.teaser.file:w.file;
+  const meta=isImg(w)?`<span class="meta">${imgLab(w.images.length)}</span>`
+    :w.teaser?`<span class="meta">لمحة · ${fmt(w.teaser.dur)} من ${fmt(w.teaser.full_dur)}</span>`:`<span class="meta full">عمل كامل · ${fmt(w.dur)}</span>`;
+  return `<button class="card${isImg(w)?" img":""}" data-open="${w.id}"><div class="thumb"${hasPv?" data-pv":""}><img src="${w.poster}" alt="" loading="lazy" decoding="async">${hasPv?`<video muted loop playsinline preload="none" data-src="${pvSrc}" aria-hidden="true"></video>`:""}${isImg(w)?"":`<span class="pl"><span class="playdot"></span></span>`}${meta}</div><b>${esc(w.title)}</b><small>${esc(w.desc)}</small></button>`;
+}
+function siteCard(s,i){
+  const act=s.url?`<a class="btn" href="${esc(s.url)}" target="_blank" rel="noopener">زيارة الموقع</a>`:`<span class="soon">قيد النشر</span>`;
+  return `<article class="site"><button class="shot" data-site="${i}" aria-label="عرض لقطة ${esc(s.title)}"><img src="${s.poster}" alt="" loading="lazy" decoding="async" width="800" height="500"></button><div class="bd"><h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><ul class="tech">${s.tech.split("·").map(t=>`<li>${esc(t.trim())}</li>`).join("")}</ul><div class="act">${act}</div></div></article>`;
+}
+function chips(){
+  const all=["الكل",...groups,...(SITES.length?[SG]:[])];
+  $("#chips").innerHTML=all.map(c=>`<button class="chip" aria-pressed="${c===cur}" data-c="${esc(c)}">${esc(c)}<span>${c==="الكل"?WORKS.length+SITES.length:c===SG?SITES.length:WORKS.filter(w=>w.group===c).length}</span></button>`).join("");
+  $("#chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{cur=b.dataset.c;chips();draw();scrollMain()});
+}
+function scrollMain(){$("#main").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"})}
+function goto(c,href){
+  if(c){if(cur!==c&&!(c==="الكل"&&cur==="الكل")){cur=c;chips();draw()}}
+  const t=href&&href.length>1?document.querySelector(href):null;
+  const el=(c===SG&&$("#sites"))||t||$("#main");el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+}
+function draw(){
+  let noted=false,n=0;
+  const works=cur===SG?[]:catsOf(cur).map(c=>{
+    const ws=WORKS.filter(w=>w.cat===c&&(cur==="الكل"||w.group===cur)), t=ws.every(tall);
+    let pre="";if(!noted&&ws[0].group==="فيديو"){noted=true;pre=`<p class="vnote">${VNOTE}</p>`}
+    return pre+`<section><div class="sec-h"><span class="no">${N(++n)}</span><h2>${esc(c)}</h2><span class="ct">${count(ws.length)}</span>${SECTIONS[c]?`<p>${SECTIONS[c]}</p>`:""}</div><div class="grid${t?" tall":""}">`+ws.map(card).join("")+`</div></section>`;
+  }).join("");
+  const sites=(cur==="الكل"||cur===SG)&&SITES.length?`<section id="sites"><div class="sec-h"><span class="no">↗</span><h2>مواقع وتطبيقات</h2><span class="ct">${SITES.length===1?"موقع واحد":SITES.length===2?"موقعان":SITES.length<11?SITES.length+" مواقع":SITES.length+" موقعًا"}</span><p>مواقع وتطبيقات ويب بنيتها من الواجهة إلى المنطق، وكل بطاقة تعرض لقطة وتقنياتها.</p></div><div class="sgrid">${SITES.map(siteCard).join("")}</div></section>`:"";
+  $("#main").innerHTML=works+sites;
+  wirePreview($("#main"));
+}
+chips();draw();
+</script>
+
+</body>
+</html>
