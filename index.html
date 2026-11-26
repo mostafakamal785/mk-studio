@@ -10,17 +10,17 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://mkstudio.studio/">
+<link rel="canonical" href="https://mkstudio.studio/">
 <meta property="og:locale" content="ar_AR">
 <meta property="og:title" content="M.K Studio">
 <meta property="og:description" content="أفلام وتصاميم وعروض وتحليل بيانات: مسلسلات كرتونية وأفلام قصيرة بالذكاء الاصطناعي، ومجلات وهويات بصرية، ومواقع وتطبيقات ويب.">
-<meta property="og:url" content="https://mkstudio.studio/">
 <meta property="og:image" content="https://mkstudio.studio/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="M.K Studio">
 <meta name="twitter:description" content="أفلام وتصاميم وعروض وتحليل بيانات: مسلسلات كرتونية وأفلام قصيرة بالذكاء الاصطناعي، ومجلات وهويات بصرية، ومواقع وتطبيقات ويب.">
 <meta name="twitter:image" content="https://mkstudio.studio/og-image.png">
-<link rel="canonical" href="https://mkstudio.studio/">
 </head>
 <body>
 <title>M.K Studio</title>
@@ -210,6 +210,14 @@ a.row:hover h3{text-decoration:underline;text-underline-offset:6px}
 .fmt h3{margin:0;font:700 20px/1.4 var(--display)}
 .fmt p{margin:0;color:var(--mute);max-width:75ch;font-size:15px}
 .fmt ul{margin:2px 0 0;padding-inline-start:20px;font-size:15px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.tool.star{border-color:var(--fox);box-shadow:0 0 0 1px var(--fox) inset}
+.tool h3{margin:0;font:700 19px/1.4 var(--display)}
+.tool p{margin:0;color:var(--mute);font-size:14.5px;flex:1}
+.tool ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.tool li{direction:ltr;unicode-bidi:isolate;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--pill);color:var(--pill-ink)}
+.tool .tag{align-self:flex-start;font-size:12px;font-weight:700;color:var(--fox-ink);background:var(--fox-wash);padding:3px 9px;border-radius:999px}
 
 .contact{margin-top:64px;border-radius:24px;background:var(--fox);color:#1a0c02;padding:clamp(34px,6vw,70px) clamp(20px,5vw,64px);display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
 .contact h2{margin:0 0 10px;font:700 clamp(32px,5vw,58px)/1.15 var(--display);text-wrap:balance}
@@ -270,14 +278,14 @@ dialog::backdrop{background:#000e}
 <div>
 <header class="top"><div class="wrap">
   <a href="#" aria-label="M.K Studio"><img class="lg lg-l" src="assets/logo_light.svg" alt="M.K Studio" width="52" height="40"><img class="lg lg-d" src="assets/logo_inverse.svg" alt="" width="52" height="40"></a>
-  <nav aria-label="الصفحة"><a href="#picks" data-go="">أبرز الأعمال</a><a href="#works" data-go="الكل">كل الأعمال</a><a href="#sites" data-go="مواقع وتطبيقات">مواقع وتطبيقات</a><a href="#services" data-go="">الخدمات</a><a href="#contact" data-go="">تواصل</a></nav>
+  <nav aria-label="الصفحة"><a href="#picks" data-go="">أبرز الأعمال</a><a href="#works" data-go="الكل">كل الأعمال</a><a href="#sites" data-go="مواقع وتطبيقات">مواقع وتطبيقات</a><a href="#services" data-go="">الخدمات</a><a href="#tools" data-go="">البرامج</a><a href="#contact" data-go="">تواصل</a></nav>
   <div class="tools">
     <button class="theme" id="theme" type="button" aria-label="تبديل الوضع الداكن والفاتح"><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
     <a class="btn" href="https://wa.me/201147320608" target="_blank" rel="noopener">واتساب</a>
     <button class="menu" id="menu" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="mnav"><svg class="b" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </div>
-<div class="mnav" id="mnav" hidden><a href="#picks" data-go="">أبرز الأعمال</a><a href="#works" data-go="الكل">كل الأعمال</a><a href="#sites" data-go="مواقع وتطبيقات">مواقع وتطبيقات</a><a href="#services" data-go="">الخدمات</a><a href="#contact" data-go="">تواصل</a><a class="btn" href="https://wa.me/201147320608" target="_blank" rel="noopener">واتساب</a></div></header>
+<div class="mnav" id="mnav" hidden><a href="#picks" data-go="">أبرز الأعمال</a><a href="#works" data-go="الكل">كل الأعمال</a><a href="#sites" data-go="مواقع وتطبيقات">مواقع وتطبيقات</a><a href="#services" data-go="">الخدمات</a><a href="#tools" data-go="">البرامج</a><a href="#contact" data-go="">تواصل</a><a class="btn" href="https://wa.me/201147320608" target="_blank" rel="noopener">واتساب</a></div></header>
 
 <section class="hero"><div class="wrap">
   <div>
@@ -299,6 +307,18 @@ dialog::backdrop{background:#000e}
     <div class="blk-h"><h2>الخدمات</h2><p>خمسة مسارات، وكل مسار يبدأ من فكرتك وينتهي بملف أو موقع جاهز للنشر أو العرض.</p></div>
     <div class="rows" id="svcs"></div>
     <div class="fmt"><h3>تنسيق الملفات وتحسينها</h3><p>أنسّق ملفات Word وPowerPoint وPDF وأرتّبها على دليل الجهة أو الجامعة. المحتوى كما هو، والتنسيق هو ما يتغيّر.</p><ul><li>خطوط وعناوين وفقرات موحّدة، واتجاه صحيح للعربية والإنجليزية</li><li>جداول وأشكال وصور بترقيم وعناوين ثابتة</li><li>فهرس وأغلفة وأرقام صفحات وقوائم المراجع</li><li>إصلاح الملفات التي تتبعثر أو تتغيّر عند فتحها على جهاز آخر</li></ul><p>أعمال العملاء في هذا المجال لا تُعرض حفاظًا على خصوصيتهم.</p></div>
+  </section>
+  <section class="blk" id="tools">
+    <div class="blk-h"><h2>البرامج والأدوات</h2><p>البرامج التي أنجزت بها أعمالًا فعلية لعملاء وطلاب. أغلب هذه الأعمال خاصة بأصحابها فلا تُعرض، ويمكنني شرح أي منها عند الطلب.</p></div>
+    <div class="tgrid">
+      <div class="tool star"><span class="tag">من أقوى أعمالي</span><h3>الأدلة الجنائية الرقمية</h3><p>ثلاث قضايا تحليل جنائي في Autopsy، أكبرها صورة قرص كاملة بحجم 7 جيجابايت حُلّلت حتى التقرير النهائي وسلسلة حفظ الأدلة. ومعها مختبرات في اختبار أمن تطبيقات الويب.</p><ul><li>Autopsy</li><li>Burp Suite</li><li>Kali Linux</li></ul></div>
+      <div class="tool"><h3>تحليل البيانات والإحصاء</h3><p>تحليل استبانات واختبار فرضيات، وجداول ورسوم جاهزة لفصل النتائج، ولوحات بيانات وقواعد بيانات صغيرة.</p><ul><li>SPSS</li><li>Excel</li><li>Power BI</li><li>Access</li></ul></div>
+      <div class="tool"><h3>البرمجة</h3><p>برامج وواجبات بعدة لغات تُشغَّل وتُختبر قبل التسليم، ولعبة تعليمية في Scratch، وأتمتة بناء الملفات بـ Python.</p><ul><li>Java</li><li>C#</li><li>Python</li><li>Scratch</li></ul></div>
+      <div class="tool"><h3>الشبكات</h3><p>تصميم شبكات وإعداد أجهزة Cisco ومحاكاتها، مع لقطات الإعداد والتحقق من الاتصال.</p><ul><li>Cisco Packet Tracer</li></ul></div>
+      <div class="tool"><h3>المستندات والعروض</h3><p>أبحاث وتقارير وعروض بالعربية والإنجليزية، منسّقة على دليل الجامعة أو الجهة.</p><ul><li>Word</li><li>PowerPoint</li><li>PDF</li></ul></div>
+      <div class="tool"><h3>التصميم والفيديو</h3><p>هويات ومجلات وإنفوجرافيك، وأفلام ومسلسلات قصيرة تجمع التصميم والتوليد بالذكاء الاصطناعي والمونتاج.</p><ul><li>Canva</li><li>CorelDRAW</li><li>Photoshop</li><li>AI Video</li></ul></div>
+      <div class="tool"><h3>الويب</h3><p>مواقع وتطبيقات ويب من الواجهة إلى المنطق، تعمل على الجوال والحاسوب.</p><ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></div>
+    </div>
   </section>
   <div class="contact" id="contact">
     <div><h2>لنبدأ عملك</h2><p>راسلني على واتساب بفكرتك أو بملفاتك، وأرد عليك بالتفاصيل.</p></div>
