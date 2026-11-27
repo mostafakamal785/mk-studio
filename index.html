@@ -405,7 +405,7 @@ dialog::backdrop{background:#000e}
   <div class="sl" id="sl" hidden><div class="pane" id="pane"><img id="im" alt=""></div></div>
   <button class="arw prev" id="lbP" type="button" aria-label="السابق"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="arw next" id="lbN" type="button" aria-label="التالي"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button></div>
   <div class="tlw" id="tlw" hidden><div class="tl" id="tl" role="img" aria-label="موضع اللمحة داخل العمل"><i id="tlSeg"></i><b id="tlPos"></b></div><small><span id="tlTxt"></span><span id="tlFull"></span></small></div>
-  <div class="lb-nav"><a class="icon" id="lbVisit" target="_blank" rel="noopener" hidden>زيارة الموقع <span aria-hidden="true">↗</span></a><a class="icon" id="lbWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a></div>
+  <div class="lb-nav"><a class="icon" id="lbVisit" target="_blank" rel="noopener" hidden>زيارة الموقع <span aria-hidden="true">↗</span></a><button class="icon" id="lbCopy" type="button" aria-live="polite">نسخ الرابط</button><a class="icon" id="lbWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a></div>
 </div></dialog>
 <button class="totop" id="totop" type="button" aria-label="العودة إلى الأعلى" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></button>
 </div>
@@ -431,7 +431,7 @@ const SECTIONS={
 const FEATURE="f1",WA="201147320608",WAD="01147320608",SG="مواقع وتطبيقات";
 const BENTO=[["g1","b"],["v01","w"],["g5","h"],["g15",""],["t1",""],["g22",""],["v03",""]];
 const VNOTE="المعروض لمحات قصيرة من الأعمال. راسلني إن أردت عملًا مشابهًا.";
-const waFor=(service,title="")=>"https://wa.me/"+WA+"?text="+encodeURIComponent(`مرحبًا، أحتاج خدمة ${service}`+(title?`، وشاهدت نموذج «${title}» في M.K Studio.`:`.`));
+const waFor=(service,title="",link="")=>"https://wa.me/"+WA+"?text="+encodeURIComponent(`مرحبًا، أحتاج خدمة ${service}`+(title?`، وشاهدت نموذج «${title}» في M.K Studio.`:`.`)+(link?"\n"+link:""));
 const $=s=>document.querySelector(s);
 const fmt=s=>{s=Math.round(s);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -480,7 +480,9 @@ const lb=$("#lb"),v=$("#v"),sl=$("#sl"),im=$("#im"),pane=$("#pane"),stage=$("#st
 const zoomT=()=>{if(!("z" in sl.dataset))return;sl.classList.toggle("fit");pane.scrollTop=0;im.setAttribute("aria-pressed",String(!sl.classList.contains("fit")))};
 im.addEventListener("click",zoomT);
 im.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();zoomT()}});
-const waMsg=w=>waFor(w.service||w.group||"مشروع جديد",w.title);
+const hashOf=w=>w&&w.id?"#"+(w.id.startsWith("site-")?"":"w-")+w.id:"";
+const linkOf=w=>w&&w.id?location.origin+location.pathname+hashOf(w):"";
+const waMsg=w=>waFor(w.service||w.group||"مشروع جديد",w.title,linkOf(w));
 const status=$("#mediaStatus");
 const tell=text=>{status.textContent=text;status.hidden=false};
 const clearStatus=()=>{status.textContent="";status.hidden=true};
@@ -499,10 +501,11 @@ function show(){
   const w=list[idx];
   clearStatus();
   $("#lbT").textContent=w.title;
-  $("#lbWa").href=waFor(w.service||w.group||"مشروع جديد",w.title);
+  $("#lbWa").href=waMsg(w);
+  copyReset();
   const vs=$("#lbVisit");vs.hidden=!w.url;if(w.url)vs.href=w.url;
   const at=list.length>1?" · العمل "+(idx+1)+" من "+list.length:"";
-  if(w.id)try{history.replaceState(null,"","#"+(w.id.startsWith("site-")?"":"w-")+w.id)}catch(e){}
+  if(w.id)try{history.replaceState({lb:1},"",hashOf(w))}catch(e){}
   const one=isImg(w)&&w.images.length>1;
   $("#lbP").hidden=$("#lbN").hidden=isImg(w)?!one&&list.length<2:list.length<2;
   tlw.hidden=true;end.hidden=true;
@@ -533,9 +536,23 @@ v.addEventListener("ended",()=>{
 });
 $("#endAgain").onclick=()=>{v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
 $("#endFull").onclick=()=>{const w=list[idx];tlw.hidden=true;playSrc(w,true)};
-function openWork(L,i,p=0){list=L;idx=i;pg=p;if(!lb.open)lb.showModal();show()}
+/* زر الرجوع في الهاتف يغلق العارض بدل الخروج من الموقع: فتح العارض يضيف خطوة في السجل */
+function openWork(L,i,p=0){list=L;idx=i;pg=p;
+  if(!lb.open){try{if(!(history.state&&history.state.lb))history.pushState({lb:1},"",hashOf(L[i])||location.href)}catch(e){}lb.showModal()}
+  show()}
 function openId(id,p=0){const w=byId(id);const L=WORKS.filter(x=>x.cat===w.cat);openWork(L,L.indexOf(w),Math.min(p,isImg(w)?w.images.length-1:0))}
-function closeLb(){v.pause();v.removeAttribute("src");v.load();lb.close();try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+function closeLb(fromPop){v.pause();v.removeAttribute("src");v.load();if(lb.open)lb.close();
+  if(fromPop===true)return;
+  try{if(history.state&&history.state.lb)history.back();else history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+addEventListener("popstate",()=>{if(lb.open&&!(history.state&&history.state.lb))closeLb(true)});
+/* نسخ رابط العمل، أو المشاركة من الهاتف */
+const cp=$("#lbCopy");
+function copyReset(){cp.textContent="نسخ الرابط"}
+cp.onclick=async()=>{const u=linkOf(list[idx]);if(!u)return;
+  try{await navigator.clipboard.writeText(u);cp.textContent="نُسخ الرابط ✓"}
+  catch(e){const t=document.createElement("textarea");t.value=u;lb.appendChild(t);t.select();
+    try{document.execCommand("copy");cp.textContent="نُسخ الرابط ✓"}catch(e2){prompt("انسخ الرابط:",u)}t.remove()}
+  setTimeout(copyReset,2500)};
 /* تحميل الصورة التالية والسابقة مسبقًا فلا تتأخر عند الضغط على السهم */
 function preNext(){
   const at=(d)=>{const w=list[idx];if(isImg(w)&&w.images[pg+d])return w.images[pg+d];const o=list[(idx+d+list.length)%list.length];return o&&isImg(o)?o.images[d<0?o.images.length-1:0]:null};
@@ -544,6 +561,7 @@ function preNext(){
 /* رابط مباشر لكل عمل: mkstudio.studio/#w-v01 أو #site-masarak */
 function openHash(){
   const h=decodeURIComponent(location.hash.slice(1));if(!h)return;
+  if(!lb.open&&!(history.state&&history.state.lb))try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}
   if(h.startsWith("site-")){const i=SITEW.findIndex(x=>x.id===h);if(i>=0)openWork(SITEW,i);return}
   if(h.startsWith("w-")&&byId(h.slice(2)))openId(h.slice(2));
 }
@@ -552,7 +570,7 @@ function step(d){
   if(isImg(w)&&w.images.length>1){const n=pg+d;if(n>=0&&n<w.images.length){pg=n;show();return}}
   idx=(idx+d+list.length)%list.length;pg=d<0&&isImg(list[idx])?list[idx].images.length-1:0;show();
 }
-$("#lbX").onclick=closeLb;lb.addEventListener("cancel",e=>{e.preventDefault();closeLb()});
+$("#lbX").onclick=()=>closeLb();lb.addEventListener("cancel",e=>{e.preventDefault();closeLb()});
 lb.onclick=e=>{if(e.target===lb)closeLb()};
 $("#lbN").onclick=()=>step(1);$("#lbP").onclick=()=>step(-1);
 /* السحب على الجوال: الإصبع لليمين = التالي (مثل شريط البطاقات في RTL). لا يعمل والتصميم مكبَّر */
