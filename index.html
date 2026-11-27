@@ -537,18 +537,19 @@ function show(){
     sl.hidden=true;stage.hidden=false;
     const t=w.teaser;
     $("#lbD").textContent=w.desc+(t?" · لمحة "+fmt(t.dur)+(t.full_dur?" من "+fmt(t.full_dur):""):" · "+fmt(w.dur))+at;
-    tlw.hidden=!(t&&t.full_dur);
-    p2Set(P2&&t&&t.full_dur);
-    if(t&&t.full_dur){
-      $("#tlSeg").style.cssText="left:"+(t.start/t.full_dur*100)+"%;width:"+((t.end-t.start)/t.full_dur*100)+"%";
-      $("#tlPos").style.left=(t.start/t.full_dur*100)+"%";
-      $("#tlTxt").textContent="من "+fmt(t.start)+" إلى "+fmt(t.end);
-      $("#tlFull").textContent="العمل كاملًا "+fmt(t.full_dur);
-    }
+    const sg=segOf(w);
+    tlw.hidden=!(sg.part||P2);
+    p2Set(P2);
+    $("#tlSeg").style.cssText="left:"+(sg.start/sg.full*100)+"%;width:"+((sg.end-sg.start)/sg.full*100)+"%";
+    $("#tlPos").style.left=(sg.start/sg.full*100)+"%";$("#tlFill").style.width="0";
+    $("#tlTxt").textContent=sg.part?"من "+fmt(sg.start)+" إلى "+fmt(sg.end):(t?"لمحة ":"المدة ")+fmt(sg.full);
+    $("#tlFull").textContent=sg.part?"العمل كاملًا "+fmt(sg.full):"";
     playSrc(w,false);
   }
 }
-v.addEventListener("timeupdate",()=>{const w=list[idx],t=w&&w.teaser;if(t&&t.full_dur&&!playingFull&&v.duration){$("#tlPos").style.left=((t.start+v.currentTime/v.duration*(t.end-t.start))/t.full_dur*100)+"%";$("#tlFill").style.width=(v.currentTime/v.duration*100)+"%"}});
+/* موضع المقطع المعروض داخل العمل: اللمحة داخل العمل الكامل، أو الفيديو كله */
+function segOf(w){const t=w.teaser;if(t&&t.full_dur)return{start:t.start,end:t.end,full:t.full_dur,part:true};const d=(t?t.dur:w.dur)||1;return{start:0,end:d,full:d,part:false}}
+v.addEventListener("timeupdate",()=>{const w=list[idx];if(!w||isImg(w))return;const t=segOf(w);if((t.part||p2On)&&!playingFull&&v.duration){$("#tlPos").style.left=((t.start+v.currentTime/v.duration*(t.end-t.start))/t.full*100)+"%";$("#tlFill").style.width=(v.currentTime/v.duration*100)+"%"}});
 v.addEventListener("ended",()=>{
   const w=list[idx];if(!w||!w.teaser||playingFull)return;
   $("#endT").textContent="انتهت اللمحة. إن أعجبك الأسلوب فراسلني لعمل مشابه.";
@@ -570,8 +571,8 @@ vMute.onclick=()=>{v.muted=!v.muted};
 $("#vFs").onclick=()=>{const el=v;(el.requestFullscreen||el.webkitRequestFullscreen||el.webkitEnterFullscreen||(()=>{})).call(el)};
 document.addEventListener("fullscreenchange",()=>{if(p2On)v.controls=!!document.fullscreenElement});
 $("#tl").addEventListener("click",e=>{
-  const w=list[idx],t=w&&w.teaser;if(!p2On||!t||!v.duration)return;
-  const r=$("#tl").getBoundingClientRect(),x=(e.clientX-r.left)/r.width*t.full_dur;
+  const w=list[idx];if(!p2On||!w||isImg(w)||!v.duration)return;const t=segOf(w);
+  const r=$("#tl").getBoundingClientRect(),x=(e.clientX-r.left)/r.width*t.full;
   if(x<t.start||x>t.end)return;v.currentTime=(x-t.start)/(t.end-t.start)*v.duration;
 });
 function openWork(L,i,p=0){list=L;idx=i;pg=p;
