@@ -296,6 +296,16 @@ dialog::backdrop{background:#000e}
 .tl{position:relative;height:6px;border-radius:99px;background:#ffffff30;overflow:hidden;direction:ltr}
 .tl i{position:absolute;top:0;bottom:0;background:var(--fox);border-radius:99px}
 .tl b{position:absolute;top:0;bottom:0;width:3px;background:#fff;left:0}
+.tl u{display:none}
+/* المشغّل التجريبي */
+.p2 .tl{height:12px;cursor:pointer}.p2 .tl i{background:#ff6a1355;overflow:hidden}.p2 .tl u{display:block;position:absolute;inset:0 auto 0 0;width:0;background:var(--fox)}
+.vbig{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;border:0;background:#000a;color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2}
+.vbig svg{width:34px;height:34px;fill:currentColor;margin-inline-start:4px}
+.vctl{position:absolute;bottom:10px;inset-inline-start:10px;display:flex;gap:8px;z-index:2}
+.vb{width:40px;height:40px;border-radius:50%;border:1px solid #ffffff40;background:#14151ae0;color:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+.vb svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.vb .spk{fill:currentColor}
+#vMute[aria-pressed="true"] .on,#vMute[aria-pressed="false"] .off{display:none}
+.p2c video{cursor:pointer}
 .tlw small{color:#cfcbc3;font-size:13px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .lb-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .totop{position:fixed;bottom:max(16px,env(safe-area-inset-bottom,0px));inset-inline-end:16px;z-index:20;width:44px;height:44px;border-radius:50%;border:1px solid var(--line,#687080);background:var(--bg);color:var(--fox);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px -8px #0008}
@@ -304,7 +314,6 @@ dialog::backdrop{background:#000e}
 .lb-mid{position:relative;min-height:0;display:grid}
 .arw{position:absolute;top:50%;translate:0 -50%;z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff40;background:#14151ae0;color:#f3efe9;display:grid;place-items:center;cursor:pointer;padding:0;box-shadow:0 6px 18px #0008;transition:background .2s,scale .2s}
 .arw svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.blurtest .arw{background:#14151acc;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}   /* تجربة فقط: ?blur=1 */
 @media (hover:hover){.arw:hover{background:var(--fox);color:#1a0c02;scale:1.06}}
 .arw:active{background:var(--fox);color:#1a0c02;scale:.92}
 .arw.prev{inset-inline-start:10px}.arw.next{inset-inline-end:10px}
@@ -407,12 +416,12 @@ dialog::backdrop{background:#000e}
 
 <dialog id="lb" aria-labelledby="lbT" aria-describedby="lbD"><div class="lb">
   <div class="lb-top"><div><b id="lbT"></b><small id="lbD"></small><small id="mediaStatus" role="status" hidden></small></div><button class="icon" id="lbX" aria-label="إغلاق"><span class="t">إغلاق </span>✕</button></div>
-  <div class="lb-mid"><div class="stage" id="stage"><video id="v" controls playsinline preload="none"></video>
+  <div class="lb-mid"><div class="stage" id="stage"><video id="v" controls playsinline preload="none"></video><button class="vbig" id="vBig" type="button" aria-label="تشغيل" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><div class="vctl" id="vctl" hidden><button class="vb" id="vMute" type="button" aria-label="تشغيل الصوت" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9h4l5-4v14l-5-4H4z"/><path class="on" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/><path class="off" d="M16 9l6 6M22 9l-6 6"/></svg></button><button class="vb" id="vFs" type="button" aria-label="ملء الشاشة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
     <div class="end" id="end" hidden><p id="endT"></p><div class="acts"><a class="btn fox" id="endWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a><button class="btn" id="endAgain" type="button" style="color:#f3efe9;border-color:#f3efe9">إعادة اللمحة</button><button class="btn" id="endFull" type="button" hidden style="color:#f3efe9;border-color:#f3efe9">شاهد الكامل</button></div></div>
   </div>
   <div class="sl" id="sl" hidden><div class="pane" id="pane"><img id="im" alt=""></div></div>
   <button class="arw prev" id="lbP" type="button" aria-label="السابق"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="arw next" id="lbN" type="button" aria-label="التالي"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button></div>
-  <div class="tlw" id="tlw" hidden><div class="tl" id="tl" role="img" aria-label="موضع اللمحة داخل العمل"><i id="tlSeg"></i><b id="tlPos"></b></div><small><span id="tlTxt"></span><span id="tlFull"></span></small></div>
+  <div class="tlw" id="tlw" hidden><div class="tl" id="tl" role="img" aria-label="موضع اللمحة داخل العمل"><i id="tlSeg"><u id="tlFill"></u></i><b id="tlPos"></b></div><small><span id="tlTxt"></span><span id="tlFull"></span></small></div>
   <div class="lb-nav"><a class="icon" id="lbVisit" target="_blank" rel="noopener" hidden>زيارة الموقع <span aria-hidden="true">↗</span></a><button class="icon" id="lbCopy" type="button" aria-label="نسخ رابط العمل"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;vertical-align:-3px"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg><span class="t"> نسخ الرابط</span></button><span class="sr" id="cpMsg" role="status"></span><a class="icon" id="lbWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a></div>
 </div></dialog>
 <button class="totop" id="totop" type="button" aria-label="العودة إلى الأعلى" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></button>
@@ -480,7 +489,8 @@ let cur="الكل";
   };
 })();
 
-if(/[?&]blur=1/.test(location.search))document.documentElement.classList.add("blurtest");
+/* تجربة المشغّل الجديد: ?player=2 (لا يراه الزوار) */
+const P2=/[?&]player=2/.test(location.search);
 /* ===== العارض ===== */
 let list=WORKS,idx=0,pg=0;
 const SITEW=SITES.map(x=>({id:"site-"+x.id,title:x.title,desc:x.desc,tech:x.tech,url:x.url,service:"موقع أو تطبيق ويب",group:SG,kind:"images",images:[x.poster],tall:false}));
@@ -499,7 +509,7 @@ v.addEventListener("error",()=>{if(v.getAttribute("src"))tell("تعذّر تحم
 im.addEventListener("error",()=>{if(im.getAttribute("src"))tell("تعذّر تحميل الصورة. أعد فتحها أو راسلني عن هذا العمل.")});
 let playingFull=false;
 function playSrc(w,full){
-  end.hidden=true;v.inert=false;playingFull=full;
+  end.hidden=true;v.inert=false;playingFull=full;if(full)p2Set(false);
   v.poster=w.poster;v.src=full?w.file:(w.teaser?w.teaser.file:w.file);
   v.play().catch(err=>{
     if(err&&err.name==="NotAllowedError")tell("اضغط زر التشغيل لمشاهدة اللمحة.");
@@ -528,6 +538,7 @@ function show(){
     const t=w.teaser;
     $("#lbD").textContent=w.desc+(t?" · لمحة "+fmt(t.dur)+(t.full_dur?" من "+fmt(t.full_dur):""):" · "+fmt(w.dur))+at;
     tlw.hidden=!(t&&t.full_dur);
+    p2Set(P2&&t&&t.full_dur);
     if(t&&t.full_dur){
       $("#tlSeg").style.cssText="left:"+(t.start/t.full_dur*100)+"%;width:"+((t.end-t.start)/t.full_dur*100)+"%";
       $("#tlPos").style.left=(t.start/t.full_dur*100)+"%";
@@ -537,7 +548,7 @@ function show(){
     playSrc(w,false);
   }
 }
-v.addEventListener("timeupdate",()=>{const w=list[idx],t=w&&w.teaser;if(t&&t.full_dur&&!playingFull&&v.duration){$("#tlPos").style.left=((t.start+v.currentTime/v.duration*(t.end-t.start))/t.full_dur*100)+"%"}});
+v.addEventListener("timeupdate",()=>{const w=list[idx],t=w&&w.teaser;if(t&&t.full_dur&&!playingFull&&v.duration){$("#tlPos").style.left=((t.start+v.currentTime/v.duration*(t.end-t.start))/t.full_dur*100)+"%";$("#tlFill").style.width=(v.currentTime/v.duration*100)+"%"}});
 v.addEventListener("ended",()=>{
   const w=list[idx];if(!w||!w.teaser||playingFull)return;
   $("#endT").textContent="انتهت اللمحة. إن أعجبك الأسلوب فراسلني لعمل مشابه.";
@@ -547,6 +558,22 @@ v.addEventListener("ended",()=>{
 $("#endAgain").onclick=()=>{v.inert=false;v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
 $("#endFull").onclick=()=>{const w=list[idx];tlw.hidden=true;playSrc(w,true)};
 /* زر الرجوع في الهاتف يغلق العارض بدل الخروج من الموقع: فتح العارض يضيف خطوة في السجل */
+/* المشغّل التجريبي: بلا شريط المتصفح، لمسة على الفيديو توقفه أو تشغله، والخط البرتقالي هو شريط التقدم */
+const vBig=$("#vBig"),vctl=$("#vctl"),vMute=$("#vMute");
+let p2On=false;
+function p2Set(on){p2On=!!on;v.controls=!p2On;vctl.hidden=!p2On;stage.classList.toggle("p2c",p2On);document.documentElement.classList.toggle("p2",p2On);if(!p2On)vBig.hidden=true;else p2Sync()}
+function p2Sync(){if(!p2On)return;vBig.hidden=!v.paused||!end.hidden;vMute.setAttribute("aria-pressed",String(v.muted));vMute.setAttribute("aria-label",v.muted?"تشغيل الصوت":"كتم الصوت")}
+["play","pause","volumechange","ended"].forEach(ev=>v.addEventListener(ev,p2Sync));
+const p2Toggle=()=>{if(!p2On)return;if(v.paused)v.play().catch(()=>{});else v.pause()};
+v.addEventListener("click",p2Toggle);vBig.onclick=p2Toggle;
+vMute.onclick=()=>{v.muted=!v.muted};
+$("#vFs").onclick=()=>{const el=v;(el.requestFullscreen||el.webkitRequestFullscreen||el.webkitEnterFullscreen||(()=>{})).call(el)};
+document.addEventListener("fullscreenchange",()=>{if(p2On)v.controls=!!document.fullscreenElement});
+$("#tl").addEventListener("click",e=>{
+  const w=list[idx],t=w&&w.teaser;if(!p2On||!t||!v.duration)return;
+  const r=$("#tl").getBoundingClientRect(),x=(e.clientX-r.left)/r.width*t.full_dur;
+  if(x<t.start||x>t.end)return;v.currentTime=(x-t.start)/(t.end-t.start)*v.duration;
+});
 function openWork(L,i,p=0){list=L;idx=i;pg=p;
   if(!lb.open){try{if(!(history.state&&history.state.lb))history.pushState({lb:1},"",hashOf(L[i])||location.href)}catch(e){}lb.showModal()}
   show()}
