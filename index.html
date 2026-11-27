@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Almarai:wght@400;700&display=swap">
 <style>
 [hidden]{display:none!important}
+html{-webkit-tap-highlight-color:transparent}   /* بدل المربع الأزرق عند اللمس؛ الضغط يظهر بتأثير :active */
+button:active,.btn:active,a.icon:active,.chip:active{scale:.97}
 /* التركيب: صفحة محرّرية فاتحة أساسًا، والداكن بتبديل متغيّرات الألوان فقط. البرتقالي #ff6a13 ثابت في الوضعين.
    الهيرو: فيلم مميز (لمحة صامتة) مع هويتين، ثم «أبرز الأعمال» بينتو، فئات، أقسام، مواقع وتطبيقات، خدمات، تواصل. */
 :root{
@@ -302,7 +304,8 @@ dialog::backdrop{background:#000e}
 .lb-mid{position:relative;min-height:0;display:grid}
 .arw{position:absolute;top:50%;translate:0 -50%;z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff40;background:#14151ae0;color:#f3efe9;display:grid;place-items:center;cursor:pointer;padding:0;box-shadow:0 6px 18px #0008;transition:background .2s,scale .2s}
 .arw svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.arw:hover{background:var(--fox);color:#1a0c02;scale:1.06}
+@media (hover:hover){.arw:hover{background:var(--fox);color:#1a0c02;scale:1.06}}
+.arw:active{background:var(--fox);color:#1a0c02;scale:.92}
 .arw.prev{inset-inline-start:10px}.arw.next{inset-inline-end:10px}
 .arw[hidden]{display:none}
 @media (max-width:640px){.arw{width:40px;height:40px}.arw svg{width:18px;height:18px}.arw.prev{inset-inline-start:4px}.arw.next{inset-inline-end:4px}}
