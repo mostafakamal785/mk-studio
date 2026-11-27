@@ -30,6 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Almarai:wght@400;700&display=swap">
 <style>
+[hidden]{display:none!important}
 /* التركيب: صفحة محرّرية فاتحة أساسًا، والداكن بتبديل متغيّرات الألوان فقط. البرتقالي #ff6a13 ثابت في الوضعين.
    الهيرو: فيلم مميز (لمحة صامتة) مع هويتين، ثم «أبرز الأعمال» بينتو، فئات، أقسام، مواقع وتطبيقات، خدمات، تواصل. */
 :root{
@@ -308,6 +309,8 @@ dialog::backdrop{background:#000e}
 .lb .icon{border:1px solid #687080;background:#17191f;color:#f3efe9;border-radius:10px;padding:8px 16px;cursor:pointer;font:inherit;text-decoration:none}
 #lb a.icon{display:inline-flex;align-items:center}
 #lb a.icon[hidden]{display:none}
+.lb .icon{white-space:nowrap;flex-shrink:0}
+@media (max-width:640px){.lb-nav{flex-wrap:nowrap;gap:6px}.lb-nav .icon{padding:8px 10px;font-size:14px}#lbX .t,#lbCopy .t{display:none}#lbX,#lbCopy{min-width:40px;justify-content:center}}
 #lbWa{background:var(--fox);border-color:var(--fox);color:#1a0c02;font-weight:700}
 #lb{--ink:#f3efe9;--mute:#a3a7b3;--bg:#050506;--card:#17191f;--line:#687080;color-scheme:dark}
 #lb .btn:not(.fox){color:#f3efe9;border-color:#f3efe9}
@@ -399,14 +402,14 @@ dialog::backdrop{background:#000e}
 </div></footer>
 
 <dialog id="lb" aria-labelledby="lbT" aria-describedby="lbD"><div class="lb">
-  <div class="lb-top"><div><b id="lbT"></b><small id="lbD"></small><small id="mediaStatus" role="status" hidden></small></div><button class="icon" id="lbX" aria-label="إغلاق">إغلاق ✕</button></div>
+  <div class="lb-top"><div><b id="lbT"></b><small id="lbD"></small><small id="mediaStatus" role="status" hidden></small></div><button class="icon" id="lbX" aria-label="إغلاق"><span class="t">إغلاق </span>✕</button></div>
   <div class="lb-mid"><div class="stage" id="stage"><video id="v" controls playsinline preload="none"></video>
     <div class="end" id="end" hidden><p id="endT"></p><div class="acts"><a class="btn fox" id="endWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a><button class="btn" id="endAgain" type="button" style="color:#f3efe9;border-color:#f3efe9">إعادة اللمحة</button><button class="btn" id="endFull" type="button" hidden style="color:#f3efe9;border-color:#f3efe9">شاهد الكامل</button></div></div>
   </div>
   <div class="sl" id="sl" hidden><div class="pane" id="pane"><img id="im" alt=""></div></div>
   <button class="arw prev" id="lbP" type="button" aria-label="السابق"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><button class="arw next" id="lbN" type="button" aria-label="التالي"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button></div>
   <div class="tlw" id="tlw" hidden><div class="tl" id="tl" role="img" aria-label="موضع اللمحة داخل العمل"><i id="tlSeg"></i><b id="tlPos"></b></div><small><span id="tlTxt"></span><span id="tlFull"></span></small></div>
-  <div class="lb-nav"><a class="icon" id="lbVisit" target="_blank" rel="noopener" hidden>زيارة الموقع <span aria-hidden="true">↗</span></a><button class="icon" id="lbCopy" type="button" aria-live="polite">نسخ الرابط</button><a class="icon" id="lbWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a></div>
+  <div class="lb-nav"><a class="icon" id="lbVisit" target="_blank" rel="noopener" hidden>زيارة الموقع <span aria-hidden="true">↗</span></a><button class="icon" id="lbCopy" type="button" aria-label="نسخ رابط العمل"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;vertical-align:-3px"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg><span class="t"> نسخ الرابط</span></button><span class="sr" id="cpMsg" role="status"></span><a class="icon" id="lbWa" target="_blank" rel="noopener">اطلب عملًا مشابهًا</a></div>
 </div></dialog>
 <button class="totop" id="totop" type="button" aria-label="العودة إلى الأعلى" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></button>
 </div>
@@ -491,7 +494,7 @@ v.addEventListener("error",()=>{if(v.getAttribute("src"))tell("تعذّر تحم
 im.addEventListener("error",()=>{if(im.getAttribute("src"))tell("تعذّر تحميل الصورة. أعد فتحها أو راسلني عن هذا العمل.")});
 let playingFull=false;
 function playSrc(w,full){
-  end.hidden=true;playingFull=full;
+  end.hidden=true;v.inert=false;playingFull=full;
   v.poster=w.poster;v.src=full?w.file:(w.teaser?w.teaser.file:w.file);
   v.play().catch(err=>{
     if(err&&err.name==="NotAllowedError")tell("اضغط زر التشغيل لمشاهدة اللمحة.");
@@ -511,7 +514,7 @@ function show(){
   $("#lbP").hidden=$("#lbN").hidden=isImg(w)?!one&&list.length<2:list.length<2;
   tlw.hidden=true;end.hidden=true;
   if(isImg(w)){
-    v.pause();v.removeAttribute("src");stage.hidden=true;sl.hidden=false;
+    v.pause();v.removeAttribute("src");v.load();v.inert=false;stage.hidden=true;sl.hidden=false;
     im.alt=w.title+"، صورة "+(pg+1)+" من "+w.images.length;
     im.src=w.images[pg];pane.scrollTop=0;sl.classList.toggle("fit",!w.tall&&w.images.length>0);if(!w.tall&&w.images.length>0){sl.dataset.z="";im.tabIndex=0;im.setAttribute("role","button");im.setAttribute("aria-label","تكبير التصميم أو تصغيره");im.setAttribute("aria-pressed","false")}else{delete sl.dataset.z;im.removeAttribute("tabindex");im.removeAttribute("role");im.removeAttribute("aria-label");im.removeAttribute("aria-pressed")}
     $("#lbD").textContent=w.desc+(w.tech?" · "+w.tech:"")+(one?" · صورة "+(pg+1)+" من "+w.images.length:"")+at;preNext();
@@ -534,8 +537,9 @@ v.addEventListener("ended",()=>{
   const w=list[idx];if(!w||!w.teaser||playingFull)return;
   $("#endT").textContent="انتهت اللمحة. إن أعجبك الأسلوب فراسلني لعمل مشابه.";
   $("#endWa").href=waMsg(w);$("#endFull").hidden=!w.file;end.hidden=false;
+  if(lb.contains(document.activeElement)){v.inert=true;$("#endAgain").focus({preventScroll:true})}
 });
-$("#endAgain").onclick=()=>{v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
+$("#endAgain").onclick=()=>{v.inert=false;v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
 $("#endFull").onclick=()=>{const w=list[idx];tlw.hidden=true;playSrc(w,true)};
 /* زر الرجوع في الهاتف يغلق العارض بدل الخروج من الموقع: فتح العارض يضيف خطوة في السجل */
 function openWork(L,i,p=0){list=L;idx=i;pg=p;
@@ -548,11 +552,12 @@ function closeLb(fromPop){v.pause();v.removeAttribute("src");v.load();if(lb.open
 addEventListener("popstate",()=>{if(lb.open&&!(history.state&&history.state.lb))closeLb(true)});
 /* نسخ رابط العمل، أو المشاركة من الهاتف */
 const cp=$("#lbCopy");
-function copyReset(){cp.textContent="نسخ الرابط"}
+function copyReset(){cp.querySelector(".t").textContent=" نسخ الرابط"}
+const copied=()=>{cp.querySelector(".t").textContent=" نُسخ ✓";$("#cpMsg").textContent="نُسخ رابط العمل";setTimeout(()=>{$("#cpMsg").textContent=""},2500)};
 cp.onclick=async()=>{const u=linkOf(list[idx]);if(!u)return;
-  try{await navigator.clipboard.writeText(u);cp.textContent="نُسخ الرابط ✓"}
+  try{await navigator.clipboard.writeText(u);copied()}
   catch(e){const t=document.createElement("textarea");t.value=u;lb.appendChild(t);t.select();
-    try{document.execCommand("copy");cp.textContent="نُسخ الرابط ✓"}catch(e2){prompt("انسخ الرابط:",u)}t.remove()}
+    try{document.execCommand("copy");copied()}catch(e2){prompt("انسخ الرابط:",u)}t.remove()}
   setTimeout(copyReset,2500)};
 /* تحميل الصورة التالية والسابقة مسبقًا فلا تتأخر عند الضغط على السهم */
 function preNext(){
@@ -560,11 +565,17 @@ function preNext(){
   if(saveData)return;[1,-1].forEach(d=>{const u=at(d);if(u)(new Image()).src=u});
 }
 /* رابط مباشر لكل عمل: mkstudio.studio/#w-v01 أو #site-masarak */
-function openHash(){
-  const h=decodeURIComponent(location.hash.slice(1));if(!h)return;
-  if(!lb.open&&!(history.state&&history.state.lb))try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}
-  if(h.startsWith("site-")){const i=SITEW.findIndex(x=>x.id===h);if(i>=0)openWork(SITEW,i);return}
-  if(h.startsWith("w-")&&byId(h.slice(2)))openId(h.slice(2));
+function openHash(init){
+  let h;try{h=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+  let go;
+  if(h.startsWith("site-")){const i=SITEW.findIndex(x=>x.id===h);if(i>=0)go=()=>openWork(SITEW,i)}
+  else if(h.startsWith("w-")&&byId(h.slice(2)))go=()=>openId(h.slice(2));
+  if(!go)return;                       /* روابط الأقسام (#contact…) لا تُمس */
+  try{
+    if(init===true)history.replaceState(null,"",location.pathname+location.search);   /* رابط مشارك: الرجوع يبقى في الموقع */
+    else history.replaceState({lb:1},"",location.href);                                /* تغيير # يدويًا: هذه الخطوة نفسها للعارض */
+  }catch(e){}
+  go();
 }
 function step(d){
   const w=list[idx];
@@ -726,7 +737,7 @@ function draw(){
   wirePreview($("#main"));wireStrips($("#main"));
 }
 (()=>{const b=$("#totop");const f=()=>{b.hidden=scrollY<innerHeight*1.5};addEventListener("scroll",f,{passive:true});f();b.onclick=()=>{scrollTo({top:0,behavior:reduce?"auto":"smooth"})}})();
-chips();draw();openHash();addEventListener("hashchange",openHash);
+chips();draw();openHash(true);addEventListener("hashchange",()=>openHash());
 </script>
 
 </body>
