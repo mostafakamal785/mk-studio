@@ -304,6 +304,7 @@ dialog::backdrop{background:#000e}
 .lb-mid{position:relative;min-height:0;display:grid}
 .arw{position:absolute;top:50%;translate:0 -50%;z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff40;background:#14151ae0;color:#f3efe9;display:grid;place-items:center;cursor:pointer;padding:0;box-shadow:0 6px 18px #0008;transition:background .2s,scale .2s}
 .arw svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.blurtest .arw{background:#14151acc;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}   /* تجربة فقط: ?blur=1 */
 @media (hover:hover){.arw:hover{background:var(--fox);color:#1a0c02;scale:1.06}}
 .arw:active{background:var(--fox);color:#1a0c02;scale:.92}
 .arw.prev{inset-inline-start:10px}.arw.next{inset-inline-end:10px}
@@ -479,6 +480,7 @@ let cur="الكل";
   };
 })();
 
+if(/[?&]blur=1/.test(location.search))document.documentElement.classList.add("blurtest");
 /* ===== العارض ===== */
 let list=WORKS,idx=0,pg=0;
 const SITEW=SITES.map(x=>({id:"site-"+x.id,title:x.title,desc:x.desc,tech:x.tech,url:x.url,service:"موقع أو تطبيق ويب",group:SG,kind:"images",images:[x.poster],tall:false}));
