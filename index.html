@@ -184,6 +184,12 @@ main section{padding-top:52px;scroll-margin-top:140px}
 .thumb video{position:absolute;inset:0;opacity:0;transition:opacity .3s}
 .thumb video.on{opacity:1}
 .card.img .thumb img{object-position:top}
+.strip{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.strip::-webkit-scrollbar{display:none}
+.strip img{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
+.dots{position:absolute;inset-inline:0;bottom:16px;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.55;box-shadow:0 0 3px rgba(0,0,0,.5)}
+.dots i.on{opacity:1;width:16px;border-radius:3px}
 .card:hover .thumb,.card:focus-visible .thumb{translate:0 -4px;box-shadow:0 18px 30px -18px var(--shadow)}
 .meta{position:absolute;bottom:10px;inset-inline-start:10px;background:var(--pill);color:var(--pill-ink);border-radius:8px;padding:1px 9px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;z-index:2}
 .meta.full{background:var(--ink);color:var(--bg)}
@@ -473,8 +479,8 @@ v.addEventListener("ended",()=>{
 });
 $("#endAgain").onclick=()=>{v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
 $("#endFull").onclick=()=>{const w=list[idx];tlw.hidden=true;playSrc(w,true)};
-function openWork(L,i){list=L;idx=i;pg=0;if(!lb.open)lb.showModal();show()}
-function openId(id){const w=byId(id);const L=WORKS.filter(x=>x.cat===w.cat);openWork(L,L.indexOf(w))}
+function openWork(L,i,p=0){list=L;idx=i;pg=p;if(!lb.open)lb.showModal();show()}
+function openId(id,p=0){const w=byId(id);const L=WORKS.filter(x=>x.cat===w.cat);openWork(L,L.indexOf(w),Math.min(p,isImg(w)?w.images.length-1:0))}
 function closeLb(){v.pause();v.removeAttribute("src");v.load();lb.close()}
 function step(d){
   const w=list[idx];
@@ -490,7 +496,7 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();step(e.key==="ArrowLeft"?1:-1)}
 });
 document.addEventListener("click",e=>{
-  const b=e.target.closest("[data-open]");if(b){openId(b.dataset.open);return}
+  const b=e.target.closest("[data-open]");if(b){const st=b.querySelector(".strip");openId(b.dataset.open,st?Math.round(Math.abs(st.scrollLeft)/st.clientWidth):0);return}
   const s=e.target.closest("[data-site]");if(s){const x=SITES[+s.dataset.site];openWork([{title:x.title,desc:x.desc,tech:x.tech,service:"موقع أو تطبيق ويب",group:SG,kind:"images",images:[x.poster],tall:false}],0);return}
   const g=e.target.closest("[data-go]");if(g){e.preventDefault();goto(g.dataset.go,g.getAttribute("href"))}
 });
@@ -558,12 +564,24 @@ $("#collage").innerHTML=`<button class="fw" data-open="${f.id}" id="fw"><img src
 $("#picks").innerHTML=`<div class="blk-h"><h2>أبرز الأعمال</h2></div><div class="bento">`+BENTO.map(([id,k])=>{const w=byId(id);return `<button class="tile ${k}" data-open="${id}"><img src="${w.poster}" alt="" loading="lazy" decoding="async">${isImg(w)?"":`<span class="tp"><span class="playdot"></span></span>`}<span class="lbl"><small>${esc(w.cat)}${w.teaser?" · لمحة":""}</small><b>${esc(w.title)}</b></span></button>`}).join("")+`</div>`;
 
 /* ===== الأعمال ===== */
+function strip(w){
+  const src=[w.poster,...w.images.slice(1)];
+  return `<div class="strip" data-i="0">${src.map(x=>`<img src="${x}" alt="" loading="lazy" decoding="async">`).join("")}</div><span class="dots" aria-hidden="true">${src.map((_,i)=>`<i${i?"":' class="on"'}></i>`).join("")}</span>`;
+}
+function wireStrips(root){
+  root.querySelectorAll(".strip").forEach(st=>{
+    const upd=()=>{const i=Math.round(Math.abs(st.scrollLeft)/st.clientWidth);st.dataset.i=i;
+      st.nextElementSibling.querySelectorAll("i").forEach((d,k)=>d.classList.toggle("on",k===i))};
+    let t=0;st.addEventListener("scroll",()=>{clearTimeout(t);t=setTimeout(upd,60)},{passive:true});
+    st.addEventListener("scrollend",upd);
+  });
+}
 function card(w){
   const hasPv=!isImg(w)&&(w.teaser||w.file);
   const pvSrc=w.teaser?w.teaser.file:w.file;
   const meta=isImg(w)?`<span class="meta">${imgLab(w.images.length)}</span>`
     :w.teaser?`<span class="meta">لمحة · ${fmt(w.teaser.dur)} من ${fmt(w.teaser.full_dur)}</span>`:`<span class="meta full">عمل كامل · ${fmt(w.dur)}</span>`;
-  return `<button class="card${isImg(w)?" img":""}" data-open="${w.id}"><div class="thumb"${hasPv?" data-pv":""}><img src="${w.poster}" alt="" loading="lazy" decoding="async">${hasPv?`<video muted loop playsinline preload="none" data-src="${pvSrc}" aria-hidden="true"></video>`:""}${isImg(w)?"":`<span class="pl"><span class="playdot"></span></span>`}${meta}</div><b>${esc(w.title)}</b><small>${esc(w.desc)}</small></button>`;
+  return `<button class="card${isImg(w)?" img":""}" data-open="${w.id}"><div class="thumb"${hasPv?" data-pv":""}>${isImg(w)&&w.images.length>1?strip(w):`<img src="${w.poster}" alt="" loading="lazy" decoding="async">`}${hasPv?`<video muted loop playsinline preload="none" data-src="${pvSrc}" aria-hidden="true"></video>`:""}${isImg(w)?"":`<span class="pl"><span class="playdot"></span></span>`}${meta}</div><b>${esc(w.title)}</b><small>${esc(w.desc)}</small></button>`;
 }
 function siteCard(s,i){
   const act=`<span class="soon">لقطات من الموقع</span>`;
@@ -598,7 +616,7 @@ function draw(){
   }).join("");
   const sites=(cur==="الكل"||cur===SG)&&SITES.length?`<section id="sites"><div class="sec-h"><span class="no">↗</span><h2>مواقع وتطبيقات</h2><span class="ct">${SITES.length===1?"موقع واحد":SITES.length===2?"موقعان":SITES.length<11?SITES.length+" مواقع":SITES.length+" موقعًا"}</span><p>مواقع وتطبيقات ويب بنيتها من الواجهة إلى المنطق، وكل بطاقة تعرض لقطة وتقنياتها.</p></div><div class="sgrid">${SITES.map(siteCard).join("")}</div></section>`:"";
   $("#main").innerHTML=works+sites;
-  wirePreview($("#main"));
+  wirePreview($("#main"));wireStrips($("#main"));
 }
 chips();draw();
 </script>
