@@ -297,7 +297,7 @@ dialog::backdrop{background:#000e}
 .tl i{position:absolute;top:0;bottom:0;background:var(--fox);border-radius:99px}
 .tl b{position:absolute;inset:0;will-change:transform}.tl b::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#fff}   /* يتحرك بـ transform لا left: بلا إعادة تخطيط أثناء التشغيل */
 .tl u{display:none}
-/* المشغّل التجريبي */
+/* المشغّل */
 .p2 .tl{height:12px;cursor:pointer}.p2 .tl i{background:#ff6a1355;overflow:hidden}.p2 .tl u{display:block;position:absolute;inset:0;background:var(--fox);transform-origin:left;transform:scaleX(0);will-change:transform}
 .vbig{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;border:0;background:#000a;color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2}
 .vbig svg{width:34px;height:34px;fill:currentColor;margin-inline-start:4px}
@@ -491,8 +491,8 @@ let cur="الكل";
   };
 })();
 
-/* تجربة المشغّل الجديد: ?player=2 (لا يراه الزوار) */
-const P2=/[?&]player=2/.test(location.search);
+/* المشغّل: شريط واحد هو الخط البرتقالي، ولمسة على الفيديو للتشغيل والإيقاف (اعتُمد 2026-11-27) */
+const P2=true;
 /* ===== العارض ===== */
 let list=WORKS,idx=0,pg=0;
 const SITEW=SITES.map(x=>({id:"site-"+x.id,title:x.title,desc:x.desc,tech:x.tech,url:x.url,service:"موقع أو تطبيق ويب",group:SG,kind:"images",images:[x.poster],tall:false}));
@@ -561,7 +561,7 @@ v.addEventListener("ended",()=>{
 $("#endAgain").onclick=()=>{v.inert=false;v.currentTime=0;end.hidden=true;v.play().catch(()=>{})};
 $("#endFull").onclick=()=>{const w=list[idx];tlw.hidden=true;playSrc(w,true)};
 /* زر الرجوع في الهاتف يغلق العارض بدل الخروج من الموقع: فتح العارض يضيف خطوة في السجل */
-/* المشغّل التجريبي: بلا شريط المتصفح، لمسة على الفيديو توقفه أو تشغله، والخط البرتقالي هو شريط التقدم */
+/* المشغّل: بلا شريط المتصفح، لمسة على الفيديو توقفه أو تشغله، والخط البرتقالي هو شريط التقدم */
 const vBig=$("#vBig"),vctl=$("#vctl"),vMute=$("#vMute");
 let p2On=false;
 function p2Set(on){p2On=!!on;v.controls=!p2On;vctl.hidden=!p2On;stage.classList.toggle("p2c",p2On);document.documentElement.classList.toggle("p2",p2On);if(!p2On)vBig.hidden=true;else p2Sync()}
