@@ -137,6 +137,7 @@ main:focus{outline:none}
 .more a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 .btn.small{padding:8px 14px;font-size:13px}
 .collage{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.collage:empty::before{content:"";grid-column:1/-1;aspect-ratio:16/9;border-radius:18px;background:var(--ph)}.collage:empty::after{content:"";grid-column:span 3;aspect-ratio:4/3}   /* حجز مكان الفيلم والصور قبل بنائها: لا اهتزاز */
 .fw{grid-column:1/-1;position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;cursor:pointer;background:#000;border:0;padding:0;box-shadow:0 24px 50px -24px var(--shadow);animation:rise .7s .05s backwards}
 .fw img,.fw video,.mini img{width:100%;height:100%;object-fit:cover;display:block}
 .fw video{position:absolute;inset:0;opacity:0;transition:opacity .5s}
@@ -413,7 +414,7 @@ dialog::backdrop{background:#000e}
 
 <footer><div class="wrap">
   <div class="row2"><span><img class="lg lg-l" src="assets/logo_light.svg" alt="M.K Studio" width="41" height="32"><img class="lg lg-d" src="assets/logo_inverse.svg" alt="" width="41" height="32"></span><span>أعمال العملاء المعروضة هنا بإذنهم، وملفات العملاء الخاصة لا تُعرض</span></div>
-  <div class="copy">جميع الأعمال © 2026 M.K Studio، لا يجوز إعادة استخدامها أو نشرها دون إذن.</div>
+  <div class="copy">جميع الأعمال © 2026 M.K Studio، لا يجوز إعادة استخدامها أو نشرها دون إذن. صممت هذا الموقع وبرمجته بنفسي.</div>
 </div></footer>
 
 <dialog id="lb" aria-labelledby="lbT" aria-describedby="lbD"><div class="lb">
@@ -546,7 +547,8 @@ function show(){
     $("#tlPos").style.transform="translateX("+(sg.start/sg.full*100)+"%)";$("#tlFill").style.transform="scaleX(0)";
     $("#tlTxt").textContent=sg.part?"من "+fmt(sg.start)+" إلى "+fmt(sg.end):(t?"لمحة ":"المدة ")+fmt(sg.full);
     $("#tlFull").textContent=sg.part?"العمل كاملًا "+fmt(sg.full):"";
-    playSrc(w,false);
+    /* العارض يظهر أولًا، ثم يبدأ تحميل الفيديو بعد الرسم: الضغطة تستجيب فورًا */
+    requestAnimationFrame(()=>setTimeout(()=>{if(lb.open&&list[idx]===w&&!stage.hidden)playSrc(w,false)},0));
   }
 }
 /* موضع المقطع المعروض داخل العمل: اللمحة داخل العمل الكامل، أو الفيديو كله */
@@ -583,7 +585,8 @@ function openWork(L,i,p=0){list=L;idx=i;pg=p;
   if(!lb.open){try{if(!(history.state&&history.state.lb))history.pushState({lb:1},"",hashOf(L[i])||location.href)}catch(e){}lb.showModal()}
   show()}
 function openId(id,p=0){const w=byId(id);const L=WORKS.filter(x=>x.cat===w.cat);openWork(L,L.indexOf(w),Math.min(p,isImg(w)?w.images.length-1:0))}
-function closeLb(fromPop){v.pause();v.removeAttribute("src");v.load();if(lb.open)lb.close();
+function closeLb(fromPop){v.pause();if(lb.open)lb.close();
+  setTimeout(()=>{if(!lb.open){v.removeAttribute("src");v.load()}},0);   /* تفريغ الفيديو بعد الإغلاق لا قبله */
   if(fromPop===true)return;
   try{if(history.state&&history.state.lb)history.back();else history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
 addEventListener("popstate",()=>{if(lb.open&&!(history.state&&history.state.lb))closeLb(true)});
@@ -769,7 +772,7 @@ function draw(){
     let pre="";if(!noted&&ws[0].group==="فيديو"){noted=true;pre=`<p class="vnote">${VNOTE}</p>`}
     return pre+`<section><div class="sec-h"><span class="no">${N(++n)}</span><h2>${esc(c)}</h2><span class="ct">${count(ws.length)}</span>${SECTIONS[c]?`<p>${SECTIONS[c]}</p>`:""}</div><div class="grid${t?" tall":""}">`+ws.map(w=>card(w,t)).join("")+`</div></section>`;
   }).join("");
-  const sites=(cur==="الكل"||cur===SG)&&SITES.length?`<section id="sites"><div class="sec-h"><span class="no">↗</span><h2>مواقع وتطبيقات</h2><span class="ct">${SITES.length===1?"موقع واحد":SITES.length===2?"موقعان":SITES.length<11?SITES.length+" مواقع":SITES.length+" موقعًا"}</span><p>مواقع وتطبيقات ويب بنيتها من الواجهة إلى المنطق، وكل بطاقة تعرض لقطة وتقنياتها.</p></div><div class="sgrid">${SITES.map(siteCard).join("")}</div></section>`:"";
+  const sites=(cur==="الكل"||cur===SG)&&SITES.length?`<section id="sites"><div class="sec-h"><span class="no">↗</span><h2>مواقع وتطبيقات</h2><span class="ct">${SITES.length===1?"موقع واحد":SITES.length===2?"موقعان":SITES.length<11?SITES.length+" مواقع":SITES.length+" موقعًا"}</span><p>مواقع وتطبيقات ويب بنيتها من الواجهة إلى المنطق، وكل بطاقة تعرض لقطة وتقنياتها. وهذا المعرض الذي تتصفحه صممته وبرمجته بنفسي أيضًا.</p></div><div class="sgrid">${SITES.map(siteCard).join("")}</div></section>`:"";
   $("#main").innerHTML=works+sites;
   wirePreview($("#main"));wireStrips($("#main"));
 }
